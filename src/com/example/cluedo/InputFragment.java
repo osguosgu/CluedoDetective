@@ -21,9 +21,20 @@ public class InputFragment extends Fragment {
 		System.out.println(getArguments());
 		this.logic = (GameLogic) getArguments().getSerializable("GameLogic");
 		View inputView = inflater.inflate(R.layout.tab_2_layout, container, false);
-		Spinner sp = (Spinner) inputView.findViewById(R.id.suspect_spinner);
+		
+		Spinner sp1 = (Spinner) inputView.findViewById(R.id.player_spinner);
 		ArrayList<String> names = logic.getNamesArrayList();
-		System.out.println(names.get(0));
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(container.getContext(),
+				android.R.layout.simple_spinner_dropdown_item, names);
+		sp1.setAdapter(adapter);
+		
+		Spinner sp2 = (Spinner) inputView.findViewById(R.id.player_spinner2);
+		ArrayList<String> names2 = logic.getNamesArrayList();
+		names2.add(0, "No-one!!!");
+		ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(container.getContext(),
+				android.R.layout.simple_spinner_dropdown_item, names2);
+		sp2.setAdapter(adapter2);
+		//System.out.println(names.get(0));
 		/*
 		ArrayAdapter<CharSequence> adapter;
 		System.out.println(R.array.character_array);
@@ -33,10 +44,6 @@ public class InputFragment extends Fragment {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		sp.setAdapter(adapter);
 		*/
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(container.getContext(),
-				android.R.layout.simple_spinner_dropdown_item, names);
-		sp.setAdapter(adapter);
-		
 		return inputView;
 	}
 	

@@ -4,6 +4,7 @@
     <string name="about">about</string>
     <string name="help">help</string>
 	<string name="player_prompt">Choose player</string>
+	<string name="player_prompt2">Who revealed?</string>
 	<string name="suspect_prompt">Choose suspect</string>
 	<string name="weapon_prompt">Choose weapon</string>
 	<string name="room_prompt">Choose room</string>
