@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+		<Spinner
+	        android:id="@+id/player_spinner"
+	        android:spinnerMode="dialog"
+	        android:layout_weight="1"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:prompt="@string/player_prompt"/>
+		<Spinner
+	        android:id="@+id/suspect_spinner"
+	        android:spinnerMode="dialog"
+	        android:layout_weight="1"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:entries="@array/character_array" 
+	        android:prompt="@string/suspect_prompt" />
+	    <Spinner
+	        android:id="@+id/weapon_spinner"
+	        android:spinnerMode="dialog"
+	         android:layout_weight="1"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:entries="@array/weapon_array" 
+	        android:prompt="@string/weapon_prompt" />
+
+	    <Spinner
+	        android:id="@+id/room_spinner"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:entries="@array/room_array"
+	        android:prompt="@string/room_prompt"
+	        android:spinnerMode="dialog" />
+	    
+		<Button  
+	        android:id="@+id/print_button"
+	        android:layout_weight="0.5"  
+	        android:layout_width="match_parent"  
+	        android:layout_height="match_parent"  
+	        android:text="@string/hit"
+	        android:textSize="100dp"
+	        android:onClick="submitSuspection"></Button>
+</LinearLayout>

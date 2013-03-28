@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="character_array">
+        <item>Professor Plum</item>
+        <item>Mrs. White</item>
+        <item>Mr. Green</item>
+        <item>Mrs. Peacock</item>
+        <item>Miss Scarlett</item>
+        <item>Colonel Mustard</item>
+    </string-array>
+    <string-array name="weapon_array">
+        <item>Candlestick</item>
+        <item>Knife</item>
+        <item>Lead Pipe</item>
+        <item>Revolver</item>
+        <item>Rope</item>
+        <item>Wrench</item>
+    </string-array>
+    <string-array name="room_array">
+        <item>Kitchen</item>
+        <item>Ballroom</item>
+        <item>Conservatory</item>
+        <item>Dining Room</item>
+        <item>Cellar</item>
+        <item>Billiard Room</item>
+        <item>Library</item>
+        <item>Lounge</item>
+        <item>Hall</item>
+        <item>Study</item>
+    </string-array>
+    
+    <array name="icon_array">
+        <item>@drawable/purple</item>
+        <item>@drawable/white</item>
+        <item>@drawable/green</item>
+        <item>@drawable/blue</item>
+        <item>@drawable/red</item>
+        <item>@drawable/yellow</item>
+    </array>
+</resources>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/imageViewP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+    	android:src="@drawable/blue" />
+    
+    <TextView
+        android:id="@+id/textViewP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:background="#F00"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/editTextP"
+        android:layout_width="0px"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:imeOptions="actionSend" >
+    </EditText>
+
+    <CheckBox
+        android:id="@+id/checkBoxP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="" />
+</LinearLayout>
