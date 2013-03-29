@@ -7,14 +7,14 @@
      <item
         android:id="@+id/about"
         android:orderInCategory="100"
-        android:onClick="viewInfo"
+		android:onClick="viewInfo"
         android:title="@string/about"/>
     
       <item
         android:id="@+id/help"
         android:onClick="viewHelp"
         android:orderInCategory="100"
-        android:showAsAction="always"
+		android:showAsAction="always"
 		android:icon="@drawable/question"
         android:title="@string/help"/>
      

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="about">about</string>
-    <string name="help">help</string>
+    <string name="about">About</string>
+    <string name="help">Help</string>
 	<string name="player_prompt">Choose player</string>
 	<string name="player_prompt2">Who revealed?</string>
 	<string name="suspect_prompt">Choose suspect</string>

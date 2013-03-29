@@ -4,13 +4,16 @@ package com.example.cluedo;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -19,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	public final static String EXTRA_NAMES_LIST = "com.example.cluedo.NAMES_LIST";
@@ -83,7 +87,24 @@ public class MainActivity extends Activity {
 		}
 		icons.recycle();
 	}
-
+	
+	public boolean viewInfo(MenuItem menu){
+		new AlertDialog.Builder(this)
+		.setTitle("Cluedo Detective")
+		.setMessage("by: Rihis&Osku_")
+		.setIcon(R.drawable.agent)
+		.setPositiveButton(android.R.string.yes, null).show();
+		return true;
+	}
+	public boolean viewHelp(MenuItem menu){
+		new AlertDialog.Builder(this)
+		.setTitle("Help")
+		.setMessage("\n1. Choose your own character\n\n2.Insert player names\n\n3. Toi active aika turha... katotaa vaa mihin on kirjotettu nimi\n")
+		.setIcon(R.drawable.agent)
+		.setPositiveButton(android.R.string.yes, null).show();
+		return true;
+		
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -92,24 +113,25 @@ public class MainActivity extends Activity {
 	}
 	
 	public void continueToGame(View view) {
+		// Haetaan vielä vetolaatikon data
+		Spinner spinner = (Spinner) findViewById(R.id.playerSpinner);
+		int playerid = spinner.getSelectedItemPosition();
 		// Looppi jossa haetaan kaikki valuet mitä käyttäjä on antanut
 		ArrayList<String> names = new ArrayList<String>();
 		ArrayList<Boolean> active = new ArrayList<Boolean>();
-		int playerid;
 		Resources res = getResources();
 		int sum = res.getStringArray(R.array.character_array).length;
 		LinearLayout layout = (LinearLayout) findViewById(R.id.linearLayout1);
 		for (int i = 0; i < sum; i ++) {
 			LinearLayout vlayout = (LinearLayout) layout.findViewById(i);
 			String jes = ((EditText) vlayout.findViewById(R.id.editTextP)).getText().toString();
+			
 			if (!jes.equals(""))
 				names.add( jes );
 			active.add( ((CheckBox) vlayout.findViewById(R.id.checkBoxP)).isChecked() );
 			
 		}
-		// Haetaan vielä vetolaatikon data
-		Spinner spinner = (Spinner) findViewById(R.id.playerSpinner);
-		playerid = spinner.getSelectedItemPosition();
+		
 		Intent intent = new Intent(this, AddCardsActivity.class);
 		
 		intent.putExtra(EXTRA_NAMES_LIST, names);

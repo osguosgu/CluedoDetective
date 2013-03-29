@@ -29,11 +29,12 @@ public class InputFragment extends Fragment {
 		sp1.setAdapter(adapter);
 		
 		Spinner sp2 = (Spinner) inputView.findViewById(R.id.player_spinner2);
-		ArrayList<String> names2 = logic.getNamesArrayList();
-		names2.add(0, "No-one!!!");
+		ArrayList<String> names2 = names;
 		ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(container.getContext(),
 				android.R.layout.simple_spinner_dropdown_item, names2);
+		adapter2.add("No one");
 		sp2.setAdapter(adapter2);
+		if (adapter.equals(adapter2)) System.out.println("paskaaaaa");
 		//System.out.println(names.get(0));
 		/*
 		ArrayAdapter<CharSequence> adapter;

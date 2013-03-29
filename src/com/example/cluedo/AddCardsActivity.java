@@ -3,10 +3,12 @@ package com.example.cluedo;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
@@ -79,7 +81,23 @@ public class AddCardsActivity extends Activity {
 		
 	}
 
-	
+	public boolean viewInfo(MenuItem menu){
+		new AlertDialog.Builder(this)
+		.setTitle("Cluedo Detective\nby: Rihis&Osku_ ")
+		.setMessage("by: Rihis&Osku_")
+		.setIcon(R.drawable.agent)
+		.setPositiveButton(android.R.string.yes, null).show();
+		return true;
+	}
+	public boolean viewHelp(MenuItem menu){
+		new AlertDialog.Builder(this)
+		.setTitle("Help")
+		.setMessage("\nSelect the card in your hand.\n")
+		.setIcon(R.drawable.agent)
+		.setPositiveButton(android.R.string.yes, null).show();
+		return true;
+		
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

@@ -14,11 +14,11 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -95,11 +95,30 @@ public class GameActivity extends FragmentActivity implements
 		}
 		mViewPager.setCurrentItem(1);
 		
-
-		
+	}
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.game, menu);
+		return true;	
 		
 	}
-	
+	public boolean viewInfo(MenuItem menu){
+		new AlertDialog.Builder(this)
+		.setTitle("Cluedo Detective")
+		.setMessage("by: Rihis&Osku_")
+		.setIcon(R.drawable.agent)
+		.setPositiveButton(android.R.string.yes, null).show();
+		return true;
+	}
+	public boolean viewHelp(MenuItem menu){
+		new AlertDialog.Builder(this)
+		.setTitle("Help")
+		.setMessage("\nEn jaksa kirjottaa...\n")
+		.setIcon(R.drawable.agent)
+		.setPositiveButton(android.R.string.yes, null).show();
+		return true;
+		
+	}
 	@Override
 	public void onTabSelected(ActionBar.Tab tab,
 			FragmentTransaction fragmentTransaction) {
@@ -176,7 +195,7 @@ public class GameActivity extends FragmentActivity implements
 
 		public SectionFragment() {
 		}
-
+		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
@@ -210,7 +229,7 @@ public class GameActivity extends FragmentActivity implements
 
 		    public void onClick(DialogInterface dialog, int whichButton) {
 		    	String[] array = GameActivity.this.getSpinnersData();
-		    	Toast.makeText(getBaseContext(),"SUBMITTED:"+'\n'+array[1] +'\n'+ array[2] +'\n'+ array[3] , Toast.LENGTH_SHORT).show();
+		    	Toast.makeText(getBaseContext(),"SUBMITTED:"+'\n'+array[1] +'\n'+ array[2] +'\n'+ array[3] + '\n'+ array[4] + " revealed card!" , Toast.LENGTH_SHORT).show();
 		    }
 		})
 		 .setNegativeButton(android.R.string.no, null).show();
@@ -221,14 +240,16 @@ public class GameActivity extends FragmentActivity implements
 	public String [] getSpinnersData(){
 		
 		Spinner p = (Spinner)findViewById(R.id.player_spinner);
+		Spinner p2 = (Spinner)findViewById(R.id.player_spinner2);
 		Spinner s = (Spinner)findViewById(R.id.suspect_spinner);
 		Spinner ss = (Spinner)findViewById(R.id.weapon_spinner);
 		Spinner sss = (Spinner)findViewById(R.id.room_spinner);
 		String player = (String)p.getSelectedItem(); 
+		String player2 = (String)p2.getSelectedItem();
 		String suspect = (String)s.getSelectedItem();
 		String weapon = (String)ss.getSelectedItem();
 		String room = (String)sss.getSelectedItem();
-		String [] array = {player,suspect,weapon,room};
+		String [] array = {player,suspect,weapon,room,player2};
 		return array;
 	}
 }

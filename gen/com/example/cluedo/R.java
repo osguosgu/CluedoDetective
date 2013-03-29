@@ -27,37 +27,44 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int blue=0x7f020000;
-        public static final int green=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int purple=0x7f020003;
-        public static final int red=0x7f020004;
-        public static final int white=0x7f020005;
-        public static final int yellow=0x7f020006;
+        public static final int agent=0x7f020000;
+        public static final int blue=0x7f020001;
+        public static final int green=0x7f020002;
+        public static final int help=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int purple=0x7f020005;
+        public static final int question=0x7f020006;
+        public static final int red=0x7f020007;
+        public static final int white=0x7f020008;
+        public static final int yellow=0x7f020009;
     }
     public static final class id {
-        public static final int action_settings=0x7f090015;
+        public static final int about=0x7f090018;
         public static final int button1=0x7f090000;
         public static final int checkBoxP=0x7f09000b;
         public static final int checkBoxsListView=0x7f090003;
         public static final int editTextP=0x7f09000a;
+        public static final int haista_paska=0x7f090017;
+        public static final int help=0x7f090019;
         public static final int imageViewP=0x7f090008;
         public static final int linearLayout1=0x7f090005;
         public static final int pager=0x7f090004;
         public static final int playerSpinner=0x7f090007;
-        public static final int player_spinner=0x7f09000c;
-        public static final int player_spinner2=0x7f090013;
-        public static final int print_button=0x7f090014;
-        public static final int room_spinner=0x7f090011;
+        public static final int player_spinner=0x7f09000d;
+        public static final int player_spinner2=0x7f090015;
+        public static final int print_button=0x7f090016;
+        public static final int room_spinner=0x7f090013;
         public static final int scrollView1=0x7f090002;
-        public static final int suspect_spinner=0x7f09000d;
+        public static final int suspect_spinner=0x7f09000f;
         public static final int textView1=0x7f090001;
+        public static final int textView11=0x7f09000c;
         public static final int textView2=0x7f090006;
-        public static final int textView3=0x7f09000e;
-        public static final int textView4=0x7f090010;
-        public static final int textView5=0x7f090012;
+        public static final int textView22=0x7f09000e;
+        public static final int textView3=0x7f090010;
+        public static final int textView4=0x7f090012;
+        public static final int textView5=0x7f090014;
         public static final int textViewP=0x7f090009;
-        public static final int weapon_spinner=0x7f09000f;
+        public static final int weapon_spinner=0x7f090011;
     }
     public static final class layout {
         public static final int activity_add_cards=0x7f030000;
@@ -70,7 +77,8 @@ public final class R {
     }
     public static final class menu {
         public static final int add_cards=0x7f080000;
-        public static final int main=0x7f080001;
+        public static final int game=0x7f080001;
+        public static final int main=0x7f080002;
     }
     public static final class string {
         public static final int about=0x7f060000;
