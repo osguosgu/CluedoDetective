@@ -221,6 +221,10 @@ public class GameActivity extends FragmentActivity implements
 	}
 	public void submitSuspection(View v){
 		String[] array = this.getSpinnersData();
+		if(array[0].equals("No one")){
+    		Toast.makeText(getBaseContext(),"Someone has to suspect!?", Toast.LENGTH_SHORT).show();
+    		return;
+    	}
 		new AlertDialog.Builder(this)
 		.setTitle(array[0].toUpperCase() +" SUSPECTS:")
 		.setMessage(array[1] +'\n'+ array[2] +'\n'+ array[3])
@@ -229,7 +233,8 @@ public class GameActivity extends FragmentActivity implements
 
 		    public void onClick(DialogInterface dialog, int whichButton) {
 		    	String[] array = GameActivity.this.getSpinnersData();
-		    	Toast.makeText(getBaseContext(),"SUBMITTED:"+'\n'+array[1] +'\n'+ array[2] +'\n'+ array[3] + '\n'+ array[4] + " revealed card!" , Toast.LENGTH_SHORT).show();
+		    	
+		    	Toast.makeText(getBaseContext(),"SUBMITTED:"+'\n'+array[1] +'\n'+ array[2] +'\n'+ array[3] + '\n'+ array[4] + " revealed card!" , Toast.LENGTH_LONG).show();
 		    }
 		})
 		 .setNegativeButton(android.R.string.no, null).show();

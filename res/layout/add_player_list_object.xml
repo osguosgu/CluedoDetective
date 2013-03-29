@@ -30,10 +30,4 @@
         android:ems="10"
         android:imeOptions="actionSend" >
     </EditText>
-
-    <CheckBox
-        android:id="@+id/checkBoxP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="" />
 </LinearLayout>

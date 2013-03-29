@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AddCardsActivity extends Activity {
 	public final static String EXTRA_NAMES_LIST = "com.example.cluedo.NAMES_LIST";
@@ -118,7 +119,10 @@ public class AddCardsActivity extends Activity {
 			if (box.isChecked())
 				selected.add(i);
 		}
-
+		if (selected.size() < 3){
+			Toast.makeText(getBaseContext(),R.string.select_3 , Toast.LENGTH_LONG).show();
+			return;
+		}
 		Intent intent = new Intent(this, GameActivity.class);
 		intent.putExtra(EXTRA_NAMES_LIST, names);
 		intent.putExtra(EXTRA_ACTIVE_LIST, active);

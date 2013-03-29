@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="character_array">
-        <item>Professor Plum</item>
+        <item>Miss Scarlett</item>
         <item>Mrs. White</item>
         <item>Mr. Green</item>
         <item>Mrs. Peacock</item>
-        <item>Miss Scarlett</item>
+        <item>Professor Plum</item>
         <item>Colonel Mustard</item>
     </string-array>
     <string-array name="weapon_array">
@@ -30,11 +30,11 @@
     </string-array>
     
     <array name="icon_array">
-        <item>@drawable/purple</item>
+        <item>@drawable/red</item>
         <item>@drawable/white</item>
         <item>@drawable/green</item>
         <item>@drawable/blue</item>
-        <item>@drawable/red</item>
+        <item>@drawable/purple</item>
         <item>@drawable/yellow</item>
     </array>
 </resources>

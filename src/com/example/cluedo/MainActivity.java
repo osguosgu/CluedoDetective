@@ -162,7 +162,8 @@ public class MainActivity extends Activity {
 			
 		}
 		if (names.size() < 2){
-			Toast.makeText(getBaseContext(),R.string.select_2 , Toast.LENGTH_SHORT).show();
+			Toast.makeText(getBaseContext(),R.string.select_2 , Toast.LENGTH_LONG).show();
+			return;
 		}
 		Intent intent = new Intent(this, AddCardsActivity.class);
 		
