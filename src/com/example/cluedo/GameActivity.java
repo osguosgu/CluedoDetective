@@ -112,7 +112,7 @@ public class GameActivity extends FragmentActivity implements
 	}
 	public boolean viewHelp(MenuItem menu){
 		new AlertDialog.Builder(this)
-		.setTitle("Help")
+		.setTitle(R.string.help)
 		.setMessage("\nEn jaksa kirjottaa...\n")
 		.setIcon(R.drawable.agent)
 		.setPositiveButton(android.R.string.yes, null).show();
@@ -224,7 +224,7 @@ public class GameActivity extends FragmentActivity implements
 		new AlertDialog.Builder(this)
 		.setTitle(array[0].toUpperCase() +" SUSPECTS:")
 		.setMessage(array[1] +'\n'+ array[2] +'\n'+ array[3])
-		.setIcon(android.R.drawable.ic_dialog_alert)
+		.setIcon(R.drawable.agent)
 		.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
 		    public void onClick(DialogInterface dialog, int whichButton) {

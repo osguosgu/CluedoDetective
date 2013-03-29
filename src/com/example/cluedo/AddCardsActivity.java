@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
@@ -80,7 +82,7 @@ public class AddCardsActivity extends Activity {
 		
 		
 	}
-
+	
 	public boolean viewInfo(MenuItem menu){
 		new AlertDialog.Builder(this)
 		.setTitle("Cluedo Detective\nby: Rihis&Osku_ ")
@@ -91,8 +93,8 @@ public class AddCardsActivity extends Activity {
 	}
 	public boolean viewHelp(MenuItem menu){
 		new AlertDialog.Builder(this)
-		.setTitle("Help")
-		.setMessage("\nSelect the card in your hand.\n")
+		.setTitle(R.string.help)
+		.setMessage("\nSelect the cards in your hand.\n")
 		.setIcon(R.drawable.agent)
 		.setPositiveButton(android.R.string.yes, null).show();
 		return true;

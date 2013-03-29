@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -98,13 +100,15 @@ public class MainActivity extends Activity {
 	}
 	public boolean viewHelp(MenuItem menu){
 		new AlertDialog.Builder(this)
-		.setTitle("Help")
+		.setTitle(R.string.help)
 		.setMessage("\n1. Choose your own character\n\n2.Insert player names\n\n3. Toi active aika turha... katotaa vaa mihin on kirjotettu nimi\n")
 		.setIcon(R.drawable.agent)
 		.setPositiveButton(android.R.string.yes, null).show();
 		return true;
 		
 	}
+	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -112,6 +116,26 @@ public class MainActivity extends Activity {
 		return true;
 	}
 	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+	    if (keyCode == KeyEvent.KEYCODE_BACK) {
+	    	new AlertDialog.Builder(this)
+			.setTitle(R.string.back_button_title)
+			.setMessage(R.string.back_button_msg)
+			.setIcon(R.drawable.agent)
+			.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+				
+			    public void onClick(DialogInterface dialog, int whichButton) {
+			    	
+			    	Toast.makeText(getBaseContext(),R.string.good_bye , Toast.LENGTH_SHORT).show();
+			    	finish();
+			    }
+			})
+			 .setNegativeButton(android.R.string.no, null).show(); 
+	    }
+	    return true;
+	}
 	public void continueToGame(View view) {
 		// Haetaan vielä vetolaatikon data
 		Spinner spinner = (Spinner) findViewById(R.id.playerSpinner);
@@ -126,12 +150,20 @@ public class MainActivity extends Activity {
 			LinearLayout vlayout = (LinearLayout) layout.findViewById(i);
 			String jes = ((EditText) vlayout.findViewById(R.id.editTextP)).getText().toString();
 			
-			if (!jes.equals(""))
+			if (!jes.equals("")){
 				names.add( jes );
-			active.add( ((CheckBox) vlayout.findViewById(R.id.checkBoxP)).isChecked() );
+				active.add(true);
+			}
+			else if(i == playerid){
+				names.add(getString(R.string.you));
+				active.add(true);
+			}
+			active.add(false);
 			
 		}
-		
+		if (names.size() < 2){
+			Toast.makeText(getBaseContext(),R.string.select_2 , Toast.LENGTH_SHORT).show();
+		}
 		Intent intent = new Intent(this, AddCardsActivity.class);
 		
 		intent.putExtra(EXTRA_NAMES_LIST, names);

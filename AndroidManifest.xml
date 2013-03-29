@@ -11,7 +11,7 @@
     <application
         android:name="com.example.cluedo.MyApp"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/agent"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -25,7 +25,7 @@
         </activity>
         <activity
             android:name="com.example.cluedo.AddCardsActivity"
-            android:label="@string/title_activity_add_cards" >
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.example.cluedo.GameActivity"

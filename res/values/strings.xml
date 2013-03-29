@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <string name="you">Player 1</string>
+    <string name="select_2">Select at least 2 players!</string>
+	<string name="back_button_title">Exit</string>
+	<string name="back_button_msg">Do you really want to quit?</string>
+	<string name="good_bye">Good Bye!</string>
     <string name="about">About</string>
     <string name="help">Help</string>
 	<string name="player_prompt">Choose player</string>
@@ -14,6 +18,5 @@
     <string name="title_section3">log</string>
     <string name="hit">Hit it!</string>
 
-    <string name="app_name">Cluedo</string>
-	<string name="title_activity_add_cards">AddCardsActivity</string>
+    <string name="app_name">Cluedo Detective</string>
 </resources>

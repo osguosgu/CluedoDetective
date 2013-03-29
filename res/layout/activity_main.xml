@@ -30,7 +30,7 @@
 	                android:layout_width="wrap_content"
 	                android:layout_height="wrap_content"
 	                android:layout_weight="1"
-	                android:text="Add players"
+	                android:text="ADD PLAYERS"
 	                android:textAppearance="?android:attr/textAppearanceMedium" />
 	
 	            <Button
@@ -50,7 +50,7 @@
 	                android:id="@+id/textView2"
 	                android:layout_width="match_parent"
 	                android:layout_height="wrap_content"
-	                android:text="Your character =="
+	                android:text="Your character:"
 	                android:layout_weight="1"
 	                android:textAppearance="?android:attr/textAppearanceMedium" />
 
