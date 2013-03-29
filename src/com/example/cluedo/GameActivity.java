@@ -234,7 +234,7 @@ public class GameActivity extends FragmentActivity implements
 		    public void onClick(DialogInterface dialog, int whichButton) {
 		    	String[] array = GameActivity.this.getSpinnersData();
 		    	
-		    	Toast.makeText(getBaseContext(),"SUBMITTED:"+'\n'+array[1] +'\n'+ array[2] +'\n'+ array[3] + '\n'+ array[4] + " revealed card!" , Toast.LENGTH_LONG).show();
+		    	Toast.makeText(getBaseContext(),"SUBMITTED:"+'\n'+array[1] +'\n'+ array[2] +'\n'+ array[3] + '\n'+'\n'+ array[4].toUpperCase() + " REVEALED CARD!" , Toast.LENGTH_LONG).show();
 		    }
 		})
 		 .setNegativeButton(android.R.string.no, null).show();

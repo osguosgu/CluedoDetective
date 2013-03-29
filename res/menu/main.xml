@@ -1,9 +1,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <item
-        android:id="@+id/haista_paska"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"/>
      <item
         android:id="@+id/about"
         android:onClick="viewInfo"
