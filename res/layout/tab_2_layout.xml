@@ -6,53 +6,55 @@
 		 <LinearLayout
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
-	            android:orientation="horizontal"  android:layout_weight="1"
+	            android:orientation="horizontal"
 	            >
-		        <TextView
-		            android:id="@+id/textView11"
-		            android:layout_width="match_parent"
-		            android:layout_height="wrap_content"
-		            android:layout_weight="2"
-		            android:text="@string/player_prompt"
-		            />
-		        
-				<Spinner
-				    android:id="@+id/player_spinner"
-				    android:layout_width="match_parent"
-				    android:layout_height="wrap_content"
-				    android:layout_weight="1"
-				    android:prompt="@string/player_prompt"
-				    android:spinnerMode="dialog" />
+
+		     <TextView
+		         android:id="@+id/textView11"
+		         android:layout_width="match_parent"
+		         android:layout_height="wrap_content"
+		         android:layout_weight="2"
+		         android:text="@string/player_prompt" />
 
 		</LinearLayout>
 		<LinearLayout
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
-	            android:orientation="horizontal" android:layout_weight="1">
-	            
-		        <TextView
-		            android:id="@+id/textView22"
-		            android:layout_width="match_parent"
-		            android:layout_height="wrap_content"
-		            android:layout_weight="2"
-		            android:text="@string/suspect_prompt"
-		            />
-
-		        <Spinner
-		            android:id="@+id/suspect_spinner"
-		            android:layout_width="match_parent"
-		            android:layout_height="wrap_content"
-		            android:layout_weight="1"
-		            android:entries="@array/character_array"
-		            android:hint="@string/suspect_prompt"
-		            android:prompt="@string/suspect_prompt"
-		            android:spinnerMode="dialog" />
+	            android:orientation="horizontal">
 
 		</LinearLayout>
+
+		<Spinner
+		    android:id="@+id/player_spinner"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:background="#FF00FF"
+		    android:prompt="@string/player_prompt"
+		    android:spinnerMode="dialog" />
+
+		<TextView
+		    android:id="@+id/textView22"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="2"
+		    android:text="@string/suspect_prompt" />
+
+		<Spinner
+		    android:id="@+id/suspect_spinner"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:background="#FF00F3"
+		    android:entries="@array/character_array"
+		    android:hint="@string/suspect_prompt"
+		    android:prompt="@string/suspect_prompt"
+		    android:spinnerMode="dialog" />
+
 		<LinearLayout
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
-	            android:orientation="horizontal" android:layout_weight="1"
+	            android:orientation="horizontal"
 	            >
 	            
 		        <TextView
@@ -62,40 +64,44 @@
 		            android:layout_weight="2"
 		            android:text="@string/weapon_prompt"
 		            />
-			    <Spinner
-			        android:id="@+id/weapon_spinner"
-			        android:spinnerMode="dialog"
-			        android:layout_width="match_parent"
-			        android:layout_height="wrap_content"
-			        android:layout_weight="1"
-			        android:entries="@array/weapon_array" 
-			        android:prompt="@string/weapon_prompt" />
+
 		</LinearLayout>	    
 		<LinearLayout
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
-	            android:orientation="horizontal" android:layout_weight="1">
-	            
-		        <TextView
-		            android:id="@+id/textView4"
-		            android:layout_width="match_parent"
-		            android:layout_height="wrap_content"
-		            android:layout_weight="2"
-		            android:text="@string/room_prompt"
-		            />
-			    <Spinner
-			        android:id="@+id/room_spinner"
-			        android:layout_width="match_parent"
-			        android:layout_height="wrap_content"
-			        android:layout_weight="1"
-			        android:entries="@array/room_array"
-			        android:prompt="@string/room_prompt"
-			        android:spinnerMode="dialog" />
+	            android:orientation="horizontal" >
+
 	    </LinearLayout>
+
+		<Spinner
+		    android:id="@+id/weapon_spinner"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="2"
+		    android:background="#FF23FF"
+		    android:entries="@array/weapon_array"
+		    android:prompt="@string/weapon_prompt"
+		    android:spinnerMode="dialog" />
+
+		<TextView
+		    android:id="@+id/textView4"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:text="@string/room_prompt" />
+
+		<Spinner
+		    android:id="@+id/room_spinner"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:background="#FF11FF"
+		    android:entries="@array/room_array"
+		    android:prompt="@string/room_prompt"
+		    android:spinnerMode="dialog" />
+
 	    <LinearLayout
-	            android:layout_width="match_parent"
-	            android:layout_height="wrap_content"
-	            android:orientation="horizontal" android:layout_weight="1">
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal" >
 	            
 		        <TextView
 		            android:id="@+id/textView5"
@@ -104,20 +110,17 @@
 		            android:layout_weight="2"
 		            android:text="@string/player_prompt2"
 		            />
-		        
-				<Spinner
-				    android:id="@+id/player_spinner2"
-				    android:layout_width="match_parent"
-				    android:layout_height="wrap_content"
-				    android:layout_weight="1"
-				    android:prompt="@string/player_prompt2"
-				    android:spinnerMode="dialog" />
 
 		</LinearLayout>
-		<LinearLayout
-		    android:layout_width="match_parent"
+
+	    <Spinner
+	        android:id="@+id/player_spinner2"
+	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:orientation="horizontal" android:layout_weight="1">
+	        android:layout_weight="1"
+	        android:background="#1200FF"
+	        android:prompt="@string/player_prompt2"
+	        android:spinnerMode="dialog" />
 
 			<Button
 			    android:id="@+id/print_button"
@@ -127,5 +130,4 @@
 			    android:text="@string/hit"
 			    android:textSize="70dp" />
 
-		</LinearLayout>	
 </LinearLayout>

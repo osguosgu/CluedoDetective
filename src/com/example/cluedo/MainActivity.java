@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,7 +18,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -101,7 +99,7 @@ public class MainActivity extends Activity {
 	public boolean viewHelp(MenuItem menu){
 		new AlertDialog.Builder(this)
 		.setTitle(R.string.help)
-		.setMessage("\n1. Choose your own character\n\n2.Insert player names\n\n3. Toi active aika turha... katotaa vaa mihin on kirjotettu nimi\n")
+		.setMessage("\n1. Choose your own character\n\n2.Insert player names\n")
 		.setIcon(R.drawable.agent)
 		.setPositiveButton(android.R.string.yes, null).show();
 		return true;
@@ -137,10 +135,10 @@ public class MainActivity extends Activity {
 	    return true;
 	}
 	public void continueToGame(View view) {
-		// Haetaan vielä vetolaatikon data
+		// Haetaan vielï¿½ vetolaatikon data
 		Spinner spinner = (Spinner) findViewById(R.id.playerSpinner);
 		int playerid = spinner.getSelectedItemPosition();
-		// Looppi jossa haetaan kaikki valuet mitä käyttäjä on antanut
+		// Looppi jossa haetaan kaikki valuet mitï¿½ kï¿½yttï¿½jï¿½ on antanut
 		ArrayList<String> names = new ArrayList<String>();
 		ArrayList<Boolean> active = new ArrayList<Boolean>();
 		Resources res = getResources();

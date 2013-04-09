@@ -110,6 +110,7 @@ public class GameActivity extends FragmentActivity implements
 		.setPositiveButton(android.R.string.yes, null).show();
 		return true;
 	}
+	
 	public boolean viewHelp(MenuItem menu){
 		new AlertDialog.Builder(this)
 		.setTitle(R.string.help)
@@ -212,51 +213,17 @@ public class GameActivity extends FragmentActivity implements
 				input_fragment.setArguments(b);
 				return input_fragment.onCreateView(inflater, container, savedInstanceState);
 			case 3:
-				View logView = inflater.inflate(R.layout.tab_3_layout,container, false);
-				return logView;
-			
+				//LogFragment log_fragment = new LogFragment();
+				//Bundle bb = new Bundle();
+				//bb.putSerializable("GameLogic", getArguments().getSerializable("GameLogic"));
+				//log_fragment.setArguments(bb);
+				//return log_fragment.onCreateView(inflater, container, savedInstanceState);
+				return sheetView;
 			}
 		return sheetView;
 		}
 	}
-	public void submitSuspection(View v){
-		String[] array = this.getSpinnersData();
-		if(array[0].equals("No one")){
-    		Toast.makeText(getBaseContext(),"Someone has to suspect!?", Toast.LENGTH_SHORT).show();
-    		return;
-    	}
-		new AlertDialog.Builder(this)
-		.setTitle(array[0].toUpperCase() +" SUSPECTS:")
-		.setMessage(array[1] +'\n'+ array[2] +'\n'+ array[3])
-		.setIcon(R.drawable.agent)
-		.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-
-		    public void onClick(DialogInterface dialog, int whichButton) {
-		    	String[] array = GameActivity.this.getSpinnersData();
-		    	
-		    	Toast.makeText(getBaseContext(),"SUBMITTED:"+'\n'+array[1] +'\n'+ array[2] +'\n'+ array[3] + '\n'+'\n'+ array[4].toUpperCase() + " REVEALED CARD!" , Toast.LENGTH_LONG).show();
-		    }
-		})
-		 .setNegativeButton(android.R.string.no, null).show();
-		
-		//Toast.makeText(this, player.toUpperCase() +" SUSPECTS:"+'\n'+'\n'+suspect +'\n'+ weapon +'\n'+ room  , Toast.LENGTH_SHORT).show();
-    	
-    }
-	public String [] getSpinnersData(){
-		
-		Spinner p = (Spinner)findViewById(R.id.player_spinner);
-		Spinner p2 = (Spinner)findViewById(R.id.player_spinner2);
-		Spinner s = (Spinner)findViewById(R.id.suspect_spinner);
-		Spinner ss = (Spinner)findViewById(R.id.weapon_spinner);
-		Spinner sss = (Spinner)findViewById(R.id.room_spinner);
-		String player = (String)p.getSelectedItem(); 
-		String player2 = (String)p2.getSelectedItem();
-		String suspect = (String)s.getSelectedItem();
-		String weapon = (String)ss.getSelectedItem();
-		String room = (String)sss.getSelectedItem();
-		String [] array = {player,suspect,weapon,room,player2};
-		return array;
-	}
+	
 }
 
 	

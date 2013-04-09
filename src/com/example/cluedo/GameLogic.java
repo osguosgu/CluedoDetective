@@ -4,6 +4,8 @@ package com.example.cluedo;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import android.widget.ArrayAdapter;
+
 public class GameLogic implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -11,7 +13,8 @@ public class GameLogic implements Serializable{
 	ArrayList<String> names;
 	boolean[] active;
 	int playerid;
-	
+	ArrayList<String> logItems = new ArrayList<String>();
+	ArrayAdapter<String> logAdapter;
 	
 	public GameLogic(ArrayList<String> names, boolean[] active,
 			int playerid){
@@ -23,7 +26,7 @@ public class GameLogic implements Serializable{
 	}
 	
 	public ArrayList<String> getNamesArrayList(){
-		return this.names;
+		return new ArrayList<String>(this.names);
 	}
 }
 
