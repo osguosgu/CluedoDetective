@@ -29,13 +29,15 @@ public class InputFragment extends Fragment {
 		Spinner sp1 = (Spinner) inputView.findViewById(R.id.player_spinner);
 		ArrayList<String> names = logic.getNamesArrayList();
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(container.getContext(),
-				android.R.layout.simple_spinner_dropdown_item, names);
+				android.R.layout.simple_spinner_item, names);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		sp1.setAdapter(adapter);
 		
 		Spinner sp2 = (Spinner) inputView.findViewById(R.id.player_spinner2);
 		ArrayList<String> names2 = new ArrayList<String>(names);
 		ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(container.getContext(),
-				android.R.layout.simple_spinner_dropdown_item, names2);
+				android.R.layout.simple_spinner_item, names2);
+		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		adapter2.add("No one");
 		sp2.setAdapter(adapter2);
 		
