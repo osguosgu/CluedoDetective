@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="you">Player 1</string>
+    <string name="are_you_sure_title">Are you sure?</string>
+    <string name="are_you_sure">Do you really want to start a new game?</string>
     <string name="select_2">Select at least TWO players!</string>
     <string name="select_3">Select at least THREE cards!</string>
 	<string name="back_button_title">Exit</string>

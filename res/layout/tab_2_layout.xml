@@ -126,7 +126,7 @@
 			    android:id="@+id/print_button"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
-			    android:onClick="submitSuspection"
+			    
 			    android:text="@string/hit"
 			    android:textSize="70dp" />
 

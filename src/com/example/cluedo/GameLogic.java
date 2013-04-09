@@ -4,7 +4,7 @@ package com.example.cluedo;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 
 public class GameLogic implements Serializable{
 
@@ -14,15 +14,13 @@ public class GameLogic implements Serializable{
 	boolean[] active;
 	int playerid;
 	ArrayList<String> logItems = new ArrayList<String>();
-	ArrayAdapter<String> logAdapter;
+	ListAdapter logAdapter;
 	
 	public GameLogic(ArrayList<String> names, boolean[] active,
 			int playerid){
 		this.names = names;
 		this.active = active;
 		this.playerid = playerid;
-		
-		System.out.println("jes2" +names);
 	}
 	
 	public ArrayList<String> getNamesArrayList(){

@@ -14,6 +14,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -213,17 +214,33 @@ public class GameActivity extends FragmentActivity implements
 				input_fragment.setArguments(b);
 				return input_fragment.onCreateView(inflater, container, savedInstanceState);
 			case 3:
-				//LogFragment log_fragment = new LogFragment();
-				//Bundle bb = new Bundle();
-				//bb.putSerializable("GameLogic", getArguments().getSerializable("GameLogic"));
-				//log_fragment.setArguments(bb);
-				//return log_fragment.onCreateView(inflater, container, savedInstanceState);
-				return sheetView;
+				LogFragment log_fragment = new LogFragment();
+				Bundle bb = new Bundle();
+				bb.putSerializable("GameLogic", getArguments().getSerializable("GameLogic"));
+				log_fragment.setArguments(bb);
+				return log_fragment.onCreateView(inflater, container, savedInstanceState);
+				
 			}
 		return sheetView;
 		}
 	}
-	
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+	    if (keyCode == KeyEvent.KEYCODE_BACK) {
+	    	new AlertDialog.Builder(this)
+			.setTitle(R.string.are_you_sure_title)
+			.setMessage(R.string.are_you_sure)
+			.setIcon(R.drawable.agent)
+			.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+				
+			    public void onClick(DialogInterface dialog, int whichButton) {
+			    	finish();
+			    }
+			})
+			 .setNegativeButton(android.R.string.no, null).show(); 
+	    }
+	    return true;
+	}
 }
 
 	
