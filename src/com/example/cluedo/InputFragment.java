@@ -65,7 +65,7 @@ public class InputFragment extends Fragment {
 
 	public void submitSuspection(View v){
 		String[] array = this.getSpinnersData();
-    	Toast.makeText(inputView.getContext(),"Someone has to suspect!?", Toast.LENGTH_SHORT).show();
+    	
     		
 		new AlertDialog.Builder(inputView.getContext())
 		.setTitle(array[0].toUpperCase() +" SUSPECTS:")
