@@ -23,6 +23,7 @@ public class InputFragment extends Fragment {
 			Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		System.out.println(getArguments());
+		System.out.println("Kutsuttiin on create viewiä input fragmentissa");
 		this.logic = (GameLogic) getArguments().getSerializable("GameLogic");
 		inputView = inflater.inflate(R.layout.tab_2_layout, container, false);
 		

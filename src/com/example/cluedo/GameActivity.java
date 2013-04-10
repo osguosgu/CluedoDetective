@@ -20,8 +20,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 public class GameActivity extends FragmentActivity implements
 		ActionBar.TabListener {
@@ -206,7 +204,11 @@ public class GameActivity extends FragmentActivity implements
 			switch(getArguments().getInt(ARG_SECTION_NUMBER)){
 			
 			case 1:
-				return sheetView;
+				SheetFragment sheet_fragment = new SheetFragment();
+				Bundle bbb = new Bundle();
+				bbb.putSerializable("GameLogic", getArguments().getSerializable("GameLogic"));
+				sheet_fragment.setArguments(bbb);
+				return sheet_fragment.onCreateView(inflater, container, savedInstanceState);
 			case 2:
 				InputFragment input_fragment = new InputFragment();
 				Bundle b = new Bundle();

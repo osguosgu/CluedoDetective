@@ -15,7 +15,7 @@ public class LogFragment extends ListFragment{
 			Bundle savedInstanceState) {
 		
 		super.onCreateView(inflater, container, savedInstanceState);
-		System.out.println(getArguments());
+		System.out.println("Kutsuttiin on create viewiä log fragmentissa");
 		this.logic = (GameLogic) getArguments().getSerializable("GameLogic");
 		logView = inflater.inflate(R.layout.tab_3_layout, container, false);
 		//system.out.println
