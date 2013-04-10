@@ -17,14 +17,13 @@ import android.widget.Toast;
 public class InputFragment extends Fragment {
 	
 	GameLogic logic;
+
 	View inputView;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
-		
-		setHasOptionsMenu(true);
-		
+	
 		this.logic = (GameLogic) getArguments().getSerializable("GameLogic");
 		inputView = inflater.inflate(R.layout.tab_2_layout, container, false);
 		
@@ -45,7 +44,7 @@ public class InputFragment extends Fragment {
 		
 		Button hit = (Button)inputView.findViewById(R.id.submit_suspection_button);
 		View.OnClickListener handler = new View.OnClickListener() {
-
+			
 			@Override
 			public void onClick(View inputView) {
 				InputFragment.this.submitSuspection(inputView);
@@ -77,11 +76,9 @@ public class InputFragment extends Fragment {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		sp.setAdapter(adapter);
 		*/
-	
 		return inputView;
 	}
-	
-	
+
 	public void submitSuspection(View v){
 		String[] array = this.getSpinnersData();
     	
