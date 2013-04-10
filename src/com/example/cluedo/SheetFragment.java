@@ -45,9 +45,12 @@ public class SheetFragment extends Fragment{
 		ArrayList<String> players = logic.getNamesArrayList();
 		TableRow row;
 		row = new TableRow(inputView.getContext());
-		TextView t;
+		TextView t = new TextView(inputView.getContext());
+		row.addView(t);
+		
 		for (int i = 0; i < players.size(); i++) {
 			t = new TextView(inputView.getContext());
+			t.setPadding(8,8,8,8);
 			t.setText(players.get(i));
 			//RotateAnimation rotate = (RotateAnimation) AnimationUtils.loadAnimation(inputView.getContext(), R.animator.anim);
 			//t.setAnimation(rotate);
@@ -61,10 +64,12 @@ public class SheetFragment extends Fragment{
 			row = new TableRow(inputView.getContext());
 			t = new TextView(inputView.getContext());
 			t.setText(characters[i]);
+			t.setPadding(8,8,8,8);
 			row.addView(t);
 			for (int j = 0; j < players.size(); j++) {
 				t = new TextView(inputView.getContext());
 				t.setText("0");
+				t.setPadding(8,8,8,8);
 				row.addView(t);
 			}
 			table.addView(row, new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
@@ -74,10 +79,12 @@ public class SheetFragment extends Fragment{
 			row = new TableRow(inputView.getContext());
 			t = new TextView(inputView.getContext());
 			t.setText(weapons[i]);
+			t.setPadding(8,8,8,8);
 			row.addView(t);
 			for (int j = 0; j < players.size(); j++) {
 				t = new TextView(inputView.getContext());
 				t.setText("0");
+				t.setPadding(8,8,8,8);
 				row.addView(t);
 			}
 			table.addView(row, new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
@@ -87,10 +94,12 @@ public class SheetFragment extends Fragment{
 			row = new TableRow(inputView.getContext());
 			t = new TextView(inputView.getContext());
 			t.setText(rooms[i]);
+			t.setPadding(8,8,8,8);
 			row.addView(t);
 			for (int j = 0; j < players.size(); j++) {
 				t = new TextView(inputView.getContext());
 				t.setText("0");
+				t.setPadding(8,8,8,8);
 				row.addView(t);
 			}
 			table.addView(row, new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
