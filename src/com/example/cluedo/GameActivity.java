@@ -20,8 +20,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 public class GameActivity extends FragmentActivity implements
 		ActionBar.TabListener {
@@ -45,6 +43,7 @@ public class GameActivity extends FragmentActivity implements
 	boolean[] active;// = new ArrayList<Boolean>();
 	int playerid;
 	int card_count;
+	ArrayList<Integer> cards;
 	GameLogic logic;
 	
 	@Override
@@ -55,9 +54,10 @@ public class GameActivity extends FragmentActivity implements
 		Intent intent = getIntent();
 		this.active = intent.getBooleanArrayExtra(MainActivity.EXTRA_ACTIVE_LIST);
 		this.names = intent.getStringArrayListExtra(MainActivity.EXTRA_NAMES_LIST);
+		this.cards = intent.getIntegerArrayListExtra(AddCardsActivity.EXTRA_MY_CARDS_LIST);
 		this.playerid = intent.getIntExtra(MainActivity.EXTRA_PLAYER_ID, 0);
 		System.out.println("jes1" + this.names);
-		this.logic =  new GameLogic(this.names, this.active, this.playerid);
+		this.logic =  new GameLogic(this.names, this.active, this.cards, this.playerid);
 		
 		
 		// Set up the action bar.
@@ -97,12 +97,7 @@ public class GameActivity extends FragmentActivity implements
 		mViewPager.setCurrentItem(1);
 		
 	}
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.game, menu);
-		return true;	
-		
-	}
+	
 	public boolean viewInfo(MenuItem menu){
 		new AlertDialog.Builder(this)
 		.setTitle("Cluedo Detective")
@@ -119,6 +114,13 @@ public class GameActivity extends FragmentActivity implements
 		.setIcon(R.drawable.agent)
 		.setPositiveButton(android.R.string.yes, null).show();
 		return true;
+		
+	}
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.game, menu);
+		return true;	
 		
 	}
 	@Override

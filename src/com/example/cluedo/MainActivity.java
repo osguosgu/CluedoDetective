@@ -86,6 +86,7 @@ public class MainActivity extends Activity {
 			layout.addView(new_layout);
 		}
 		icons.recycle();
+		Toast.makeText(this, "For help check the question mark at top right corner!", Toast.LENGTH_LONG).show();
 	}
 	
 	public boolean viewInfo(MenuItem menu){

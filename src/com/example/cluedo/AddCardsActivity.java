@@ -126,7 +126,7 @@ public class AddCardsActivity extends Activity {
 		Intent intent = new Intent(this, GameActivity.class);
 		intent.putExtra(EXTRA_NAMES_LIST, names);
 		intent.putExtra(EXTRA_ACTIVE_LIST, active);
-		intent.putExtra(EXTRA_MY_CARDS_LIST, selected.toArray());
+		intent.putExtra(EXTRA_MY_CARDS_LIST, selected);
 		intent.putExtra(EXTRA_PLAYER_ID, playerid);
 		System.out.println("jes0" +names);
 		startActivity(intent);

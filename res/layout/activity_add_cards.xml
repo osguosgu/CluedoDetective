@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="Give your cards"
+            android:text="Select your cards"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <ScrollView

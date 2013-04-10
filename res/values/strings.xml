@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="you">Player 1</string>
+    <string name="who">Who asks?</string>
+    <string name="what">What he/she suspected?</string>
+    <string name="who2">Who revealed card?</string>
+    <string name="delete_log">Delete log items by touching them.\n</string>
     <string name="are_you_sure_title">Are you sure?</string>
     <string name="are_you_sure">Do you really want to start a new game?</string>
     <string name="select_2">Select at least TWO players!</string>
@@ -15,11 +19,11 @@
 	<string name="suspect_prompt">Choose suspect</string>
 	<string name="weapon_prompt">Choose weapon</string>
 	<string name="room_prompt">Choose room</string>
-    <string name="action_settings">Haista paska</string>
     <string name="title_section1">sheet</string>
     <string name="title_section2">input</string>
     <string name="title_section3">log</string>
-    <string name="hit">Hit it!</string>
-
+    <string name="hit">Submit suspection!</string>
+    <string name="add_card">Add known card</string>
+	
     <string name="app_name">Cluedo Detective</string>
 </resources>

@@ -6,9 +6,10 @@
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Give Me What Happened" />
+        android:gravity="center"
+        android:text="@string/who" />
 
     <Spinner
 		android:id="@+id/player_spinner"
@@ -17,36 +18,46 @@
 		android:prompt="@string/player_prompt"
 		android:spinnerMode="dialog" />
 
-    <LinearLayout
+	<TextView
+        android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-     	android:orientation="horizontal" >
-		<Spinner
-			android:id="@+id/suspect_spinner"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-			android:entries="@array/character_array"
-			android:prompt="@string/suspect_prompt"
-			android:spinnerMode="dialog" />
-		<Spinner
-			android:id="@+id/weapon_spinner"
-	        android:layout_width="0dp"
-	        android:layout_height="wrap_content"
-	        android:layout_weight="1"
-			android:entries="@array/weapon_array"
-			android:prompt="@string/weapon_prompt"
-			android:spinnerMode="dialog" />
-		<Spinner
-			android:id="@+id/room_spinner"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-			android:entries="@array/room_array"
-			android:prompt="@string/room_prompt"
-			android:spinnerMode="dialog" />
-    </LinearLayout>
+        android:gravity="center"
+        android:text="@string/what" />
+	
+	<Spinner
+		android:id="@+id/suspect_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
+		android:entries="@array/character_array"
+		android:prompt="@string/suspect_prompt"
+		android:spinnerMode="dialog" />
+	
+	<Spinner
+		android:id="@+id/weapon_spinner"
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+		android:entries="@array/weapon_array"
+		android:prompt="@string/weapon_prompt"
+		android:spinnerMode="dialog" />
+	<Spinner
+		android:id="@+id/room_spinner"
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+		android:entries="@array/room_array"
+		android:prompt="@string/room_prompt"
+		android:spinnerMode="dialog" />
+ 
+	<TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/who2" />
+	
     <Spinner
         android:id="@+id/player_spinner2"
         android:layout_width="match_parent"
@@ -55,10 +66,22 @@
         android:spinnerMode="dialog" />
 
     <Button
-		android:id="@+id/print_button"
+        android:id="@+id/submit_suspection_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-		android:onClick="submitSuspection"
-		android:text="@string/hit" />
+        android:layout_height="match_parent"
+        android:onClick="submitSuspection"
+        android:text="@string/hit" />
+    <Button
+        android:id="@+id/add_card_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="submitSuspection"
+        android:text="@string/add_card" />
+    <Spinner
+		android:id="@+id/player_spinnerX"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+		android:prompt="@string/suspect_prompt"
+		android:spinnerMode="dialog" />
 
 </LinearLayout>
