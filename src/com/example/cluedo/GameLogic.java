@@ -30,7 +30,6 @@ public class GameLogic implements Serializable{
 	public void addSubmission(String jes){
 		this.logItems.add(jes);
 		this.logAdapter.notifyDataSetChanged();
-		
 	}
 }
 
