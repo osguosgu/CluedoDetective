@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -203,27 +204,29 @@ public class GameActivity extends FragmentActivity implements
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View sheetView = inflater.inflate(R.layout.tab_1_layout,container, false);
+			Bundle b;
+			b = new Bundle();
+			b.putSerializable("GameLogic", getArguments().getSerializable("GameLogic"));
 			
 			switch(getArguments().getInt(ARG_SECTION_NUMBER)){
-			
 			case 1:
-				return sheetView;
+				SheetFragment sheet_fragment = new SheetFragment();
+				Resources res = getResources();
+				b.putStringArray("characters", res.getStringArray(R.array.character_array));
+				b.putStringArray("weapons", res.getStringArray(R.array.weapon_array));
+				b.putStringArray("rooms", res.getStringArray(R.array.room_array));
+				sheet_fragment.setArguments(b);
+				return sheet_fragment.onCreateView(inflater, container, savedInstanceState);
 			case 2:
 				InputFragment input_fragment = new InputFragment();
-				Bundle b = new Bundle();
-				b.putSerializable("GameLogic", getArguments().getSerializable("GameLogic"));
 				input_fragment.setArguments(b);
 				return input_fragment.onCreateView(inflater, container, savedInstanceState);
 			case 3:
 				LogFragment log_fragment = new LogFragment();
-				Bundle bb = new Bundle();
-				bb.putSerializable("GameLogic", getArguments().getSerializable("GameLogic"));
-				log_fragment.setArguments(bb);
+				log_fragment.setArguments(b);
 				return log_fragment.onCreateView(inflater, container, savedInstanceState);
-				
 			}
-		return sheetView;
+			return inflater.inflate(R.layout.tab_1_layout,container, false);
 		}
 	}
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
