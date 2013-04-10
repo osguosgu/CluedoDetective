@@ -55,6 +55,7 @@ public class SheetFragment extends Fragment{
 		}
 		table.addView(row, new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 			
+		
 		for (int i = 0; i < characters.length; i++) {
 			System.out.println(characters[i]);
 			row = new TableRow(inputView.getContext());
