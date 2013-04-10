@@ -39,12 +39,11 @@ public final class R {
         public static final int yellow=0x7f020009;
     }
     public static final class id {
-        public static final int about=0x7f090012;
-        public static final int addBtn=0x7f090011;
+        public static final int about=0x7f090011;
         public static final int button1=0x7f090000;
         public static final int checkBoxsListView=0x7f090003;
         public static final int editTextP=0x7f09000a;
-        public static final int help=0x7f090013;
+        public static final int help=0x7f090012;
         public static final int imageViewP=0x7f090008;
         public static final int linearLayout1=0x7f090005;
         public static final int pager=0x7f090004;

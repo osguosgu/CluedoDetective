@@ -77,7 +77,7 @@ public class InputFragment extends Fragment {
 
 		    public void onClick(DialogInterface dialog, int whichButton) {
 		    	String[] array = InputFragment.this.getSpinnersData();
-		    	
+		    	logic.addSubmission(array[1] +' '+ array[2] +' '+ array[3] + ' ' + array[4].toUpperCase());
 		    	Toast.makeText(inputView.getContext(),"SUBMITTED:"+'\n'+array[1] +'\n'+ array[2] +'\n'+ array[3] + '\n'+'\n'+ array[4].toUpperCase() + " REVEALED CARD!" , Toast.LENGTH_LONG).show();
 		    }
 		})
