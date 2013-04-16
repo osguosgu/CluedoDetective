@@ -68,20 +68,22 @@
     <Button
         android:id="@+id/submit_suspection_button"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="submitSuspection"
         android:text="@string/hit" />
-    <Button
-        android:id="@+id/add_card_button"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:onClick="submitSuspection"
-        android:text="@string/add_card" />
+    
     <Spinner
 		android:id="@+id/player_spinnerX"
         android:layout_width="0dp"
         android:layout_height="0dp"
 		android:prompt="@string/suspect_prompt"
 		android:spinnerMode="dialog" />
+    
+    <Button
+        android:id="@+id/add_card_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="submitSuspection"
+        android:text="@string/add_card" />
 
 </LinearLayout>

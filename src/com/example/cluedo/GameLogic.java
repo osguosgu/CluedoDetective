@@ -31,7 +31,7 @@ public class GameLogic implements Serializable{
 	
 	public void addSubmission(String jes){
 		this.logItems.add(jes);
-		this.logAdapter.notifyDataSetChanged();
+		//this.logAdapter.notifyDataSetChanged();
 	}
 	public void removeFromLog(int index){
 		logItems.remove(index);

@@ -13,36 +13,36 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class LogFragment extends ListFragment{
-	
-	GameLogic logic;		
+		
 	View logView;
 	int currentItem;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		
 		super.onCreateView(inflater, container, savedInstanceState);
-		System.out.println(getArguments());
-		this.logic = (GameLogic) getArguments().getSerializable("GameLogic");
+		//System.out.println(getArguments());
+		//this.logic = (GameLogic) getArguments().getSerializable("GameLogic");
 		
 		logView = inflater.inflate(R.layout.tab_3_layout,null);
 		
-		logic.logAdapter = new ArrayAdapter<String>(inflater.getContext(), android.R.layout.simple_list_item_1, logic.logItems);
+		ArrayAdapter<String> logAdapter = new ArrayAdapter<String>(inflater.getContext(), android.R.layout.simple_list_item_1, ((GameActivity)getActivity()).getLogic().logItems);
 		ListView list = (ListView) logView.findViewById(android.R.id.list);
-	    list.setAdapter(logic.logAdapter);
+		System.out.println(list);
+	    list.setAdapter(logAdapter);
 	    list.setOnItemClickListener(new OnItemClickListener() {
-	        public void onItemClick(AdapterView<?> parent, View view,
-	                int position, long id) {
+	    	@Override
+	        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+	        		System.out.println("Kutsuttiin poistoa");
 	        		currentItem = position;
 		        	new AlertDialog.Builder(logView.getContext())
 		    		.setTitle("Delete log item")
 		    		.setMessage("Are you sure?")
 		    		.setIcon(R.drawable.agent)
 		    		.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-	
+		    			@Override
 		    		    public void onClick(DialogInterface dialog, int whichButton) {
-		    		    	logic.removeFromLog(currentItem);
-		    		    	logic.updateLog();
+		    		    	((GameActivity)getActivity()).getLogic().removeFromLog(currentItem);
+		    		    	((GameActivity)getActivity()).getLogic().updateLog();
 		                	Toast.makeText(logView.getContext(), "Log item deleted.", Toast.LENGTH_SHORT).show();	
 		    		    }
 		    		})
@@ -54,7 +54,7 @@ public class LogFragment extends ListFragment{
 		//String []list = {"jes"};
 		//System.out.println(list);
 		//logic.logAdapter = new ArrayAdapter<String>(logView.getContext(), android.R.layout.simple_list_item_1, list);
-	    //setListAdapter(logic.logAdapter);
+	    //setListAdapter(logAdapter);
 		return logView;
 	}
 }

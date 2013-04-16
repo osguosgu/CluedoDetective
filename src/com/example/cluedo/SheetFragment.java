@@ -2,21 +2,24 @@ package com.example.cluedo;
 
 import java.util.ArrayList;
 
+import android.app.Activity;
 import android.app.Fragment;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
-import android.view.animation.RotateAnimation;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
 
-public class SheetFragment extends Fragment{
+public class SheetFragment extends Fragment{ /*
 	GameLogic logic;
 	String[] characters, weapons, rooms;
+	View inputView;
+	TableLayout thistable;
+	Boolean hidden;*/
 	View inputView;
 	
 	@Override
@@ -24,46 +27,63 @@ public class SheetFragment extends Fragment{
 			Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		System.out.println("Kutsuttiin on create viewiä sheet fragmentista");
-		this.inputView = inflater.inflate(R.layout.tab_1_layout, container, false);
 		
-		this.logic = (GameLogic) getArguments().getSerializable("GameLogic");
-		this.characters = (String[]) getArguments().getSerializable("characters");
-		this.weapons = (String[]) getArguments().getSerializable("weapons");
-		this.rooms = (String[]) getArguments().getSerializable("rooms");
+		inputView = inflater.inflate(R.layout.tab_1_layout, container, false);
+
+		inputView.findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				System.out.println("Hide Button painettu");
+				Activity activity = getActivity();
+				System.out.println("Activity haettu");
+				if (activity == null) return;
+				System.out.println("Easdfasdfasdfasdf");
+			}
+		});
 		
-		this.updateTable();
+		updateTable();
 		
 		return inputView;
 	}
+
+	@Override
+	public void onAttach(Activity activity) {
+		System.out.println("HeiheiheiJASDFFJDSDFJKLJLADFKSDJKLÖJKLÖSDJLÖSDJKLÖSDFJÖ");
+		super.onAttach(activity);
+	}
+	
 	public void updateTable() {
-		System.out.println("UPDATE TABLE KUTSUTTU SHEET FRAGMENTISSA!!!!!!!");
 		
 		TableLayout table = (TableLayout) inputView.findViewById(R.id.tableLayout1);
 		
 		table.removeAllViews();
 		
-		ArrayList<String> players = logic.getNamesArrayList();
+		ArrayList<String> players = ((GameActivity) getActivity()).getLogic().getNamesArrayList();
 		TableRow row;
 		row = new TableRow(inputView.getContext());
 		TextView t = new TextView(inputView.getContext());
 		row.addView(t);
 		
+		int counter = 0;
+		
 		for (int i = 0; i < players.size(); i++) {
 			t = new TextView(inputView.getContext());
 			t.setPadding(8,8,8,8);
 			t.setText(players.get(i));
-			//RotateAnimation rotate = (RotateAnimation) AnimationUtils.loadAnimation(inputView.getContext(), R.animator.anim);
-			//t.setAnimation(rotate);
+			row.setId(counter);
+			counter += 1;
 			row.addView(t);
 		}
 		table.addView(row, new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 			
-		
-		for (int i = 0; i < characters.length; i++) {
-			System.out.println(characters[i]);
+		Resources res = getActivity().getResources();
+		String[] string;
+		string = res.getStringArray(R.array.character_array);
+
+		for (int i = 0; i < string.length; i++) {
 			row = new TableRow(inputView.getContext());
 			t = new TextView(inputView.getContext());
-			t.setText(characters[i]);
+			t.setText(string[i]);
 			t.setPadding(8,8,8,8);
 			row.addView(t);
 			for (int j = 0; j < players.size(); j++) {
@@ -72,13 +92,15 @@ public class SheetFragment extends Fragment{
 				t.setPadding(8,8,8,8);
 				row.addView(t);
 			}
+			row.setId(counter);
+			counter += 1;
 			table.addView(row, new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 		}
-		for (int i = 0; i < weapons.length; i++) {
-			System.out.println(weapons[i]);
+		string = res.getStringArray(R.array.weapon_array);
+		for (int i = 0; i < string.length; i++) {
 			row = new TableRow(inputView.getContext());
 			t = new TextView(inputView.getContext());
-			t.setText(weapons[i]);
+			t.setText(string[i]);
 			t.setPadding(8,8,8,8);
 			row.addView(t);
 			for (int j = 0; j < players.size(); j++) {
@@ -87,13 +109,15 @@ public class SheetFragment extends Fragment{
 				t.setPadding(8,8,8,8);
 				row.addView(t);
 			}
+			row.setId(counter);
+			counter += 1;
 			table.addView(row, new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 		}
-		for (int i = 0; i < rooms.length; i++) {
-			System.out.println(rooms[i]);
+		string = res.getStringArray(R.array.room_array);
+		for (int i = 0; i < string.length; i++) {
 			row = new TableRow(inputView.getContext());
 			t = new TextView(inputView.getContext());
-			t.setText(rooms[i]);
+			t.setText(string[i]);
 			t.setPadding(8,8,8,8);
 			row.addView(t);
 			for (int j = 0; j < players.size(); j++) {
@@ -102,7 +126,29 @@ public class SheetFragment extends Fragment{
 				t.setPadding(8,8,8,8);
 				row.addView(t);
 			}
+			row.setId(counter);
+			counter += 1;
 			table.addView(row, new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 		}
 	}
+
+		/*
+				if (this.hidden) {
+					for (int i = 0; i < 10; i++) {
+						TableRow row = (TableRow) thistable.findViewById(i);
+						row.startAnimation(AnimationUtils.loadAnimation(activity, android.R.anim.fade_in));
+						row.setVisibility(View.VISIBLE);
+					}
+					this.hidden = false;
+				}
+				else {
+					for (int i = 0; i < 10; i++) {
+						TableRow row = (TableRow) thistable.findViewById(i);
+						row.startAnimation(AnimationUtils.loadAnimation(activity, android.R.anim.fade_out));
+						row.setVisibility(View.INVISIBLE);
+					}
+					this.hidden = true;
+				}
+			}
+		});*/
 }
