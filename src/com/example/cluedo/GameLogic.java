@@ -10,18 +10,25 @@ public class GameLogic {
 	
 	ArrayList<String> names;
 	boolean[] active;
-	int playerid;
+	int playerid, card_amount;
 	ArrayAdapter<String> logAdapter;
 	ArrayList<Integer> cards;
-	
 	ArrayList<LogItem> log;
 	
-	public GameLogic(ArrayList<String> names, boolean[] active, ArrayList<Integer> cards, int playerid){
+	GridStatus[][] grid;
+	
+	public GameLogic(ArrayList<String> names, boolean[] active, ArrayList<Integer> cards, int playerid, int card_amount){
+		System.out.println(names);
+		System.out.println(active);
+		System.out.println(cards);
+		System.out.println(playerid);
 		this.names = names;
 		this.active = active;
 		this.cards = cards;
 		this.playerid = playerid;
+		this.card_amount = card_amount;
 		log = new ArrayList<LogItem>();
+		this.updateSheetData();
 	}
 	
 	public ArrayList<String> getNamesArrayList(){
@@ -41,6 +48,8 @@ public class GameLogic {
 	}
 	
 	public void addInput(int asker, int answerer, int room_card, int weapon_card, int character_card) {
+		if (answerer >= this.names.size())
+			return;
 		this.log.add(new LogItem(asker, answerer, room_card, weapon_card, character_card));
 	}
 	
@@ -50,10 +59,31 @@ public class GameLogic {
 	
 	public void updateSheetData() {
 		// This needs to be called so that getDataAt returns things that are up to date
-		
+		grid = new GridStatus[this.card_amount][this.names.size()];
+		for (int i = 0; i < this.card_amount; i++){
+			for (int j = 0; j < this.names.size(); j++) {
+				grid[i][j] = new GridStatus();
+			}
+		}
+		int guess_id = 0;
+		for (LogItem i : log) {
+			if (i.type == 0) {
+				if (i.answerer == this.playerid){
+					grid[i.known_card][i.asker].is_known = true;  
+				}
+			}
+			if (i.type == 1) {
+				for (int j = 0; j < this.names.size(); j ++) {
+					grid[i.known_card][j].is_known = true;
+				}
+			}
+		}
 	}
 	
 	public int getDataAt(int card_id, int player_id) {
+		System.out.println(this.grid);
+		if (this.grid[card_id][player_id].is_known)
+			return 1;
 		return 0;
 	}
 	
@@ -84,6 +114,14 @@ public class GameLogic {
 				return "Known card id was: " + this.known_card;
 			}
 			return "Error";
+		}
+	}
+	public class GridStatus {
+		Boolean is_known;
+		Boolean can_have;
+		public GridStatus() {
+			is_known = false;
+			can_have = true;
 		}
 	}
 }

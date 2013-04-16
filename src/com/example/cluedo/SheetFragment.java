@@ -33,11 +33,26 @@ public class SheetFragment extends Fragment{ /*
 		inputView.findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				System.out.println("Hide Button painettu");
 				Activity activity = getActivity();
-				System.out.println("Activity haettu");
 				if (activity == null) return;
-				System.out.println("Easdfasdfasdfasdf");
+				//if (this.hidden) {
+				//	for (int i = 0; i < 10; i++) {
+				//		TableRow row = (TableRow) inputView.findViewById(R.id.tableLayout1).findViewById(i);
+				//		row.startAnimation(AnimationUtils.loadAnimation(activity, android.R.anim.fade_out));
+				//		row.setVisibility(View.INVISIBLE);
+				//	}
+				/*	this.hidden = false;
+				}
+				else {
+					for (int i = 0; i < 10; i++) {
+						TableRow row = (TableRow) thistable.findViewById(i);
+						row.startAnimation(AnimationUtils.loadAnimation(activity, android.R.anim.fade_out));
+						row.setVisibility(View.INVISIBLE);
+					}
+					this.hidden = true;
+				}*/
+
+						
 			}
 		});
 		
@@ -133,23 +148,4 @@ public class SheetFragment extends Fragment{ /*
 		}
 	}
 
-		/*
-				if (this.hidden) {
-					for (int i = 0; i < 10; i++) {
-						TableRow row = (TableRow) thistable.findViewById(i);
-						row.startAnimation(AnimationUtils.loadAnimation(activity, android.R.anim.fade_in));
-						row.setVisibility(View.VISIBLE);
-					}
-					this.hidden = false;
-				}
-				else {
-					for (int i = 0; i < 10; i++) {
-						TableRow row = (TableRow) thistable.findViewById(i);
-						row.startAnimation(AnimationUtils.loadAnimation(activity, android.R.anim.fade_out));
-						row.setVisibility(View.INVISIBLE);
-					}
-					this.hidden = true;
-				}
-			}
-		});*/
 }
