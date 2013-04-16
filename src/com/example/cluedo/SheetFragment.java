@@ -53,9 +53,12 @@ public class SheetFragment extends Fragment{ /*
 	}
 	
 	public void updateTable() {
+		// Lets update gamelogic
+		GameLogic logic = ((GameActivity) getActivity()).getLogic();
+		logic.updateSheetData();
 		
+		// Get and clear the table
 		TableLayout table = (TableLayout) inputView.findViewById(R.id.tableLayout1);
-		
 		table.removeAllViews();
 		
 		ArrayList<String> players = ((GameActivity) getActivity()).getLogic().getNamesArrayList();
@@ -64,14 +67,11 @@ public class SheetFragment extends Fragment{ /*
 		TextView t = new TextView(inputView.getContext());
 		row.addView(t);
 		
-		int counter = 0;
 		
 		for (int i = 0; i < players.size(); i++) {
 			t = new TextView(inputView.getContext());
 			t.setPadding(8,8,8,8);
 			t.setText(players.get(i));
-			row.setId(counter);
-			counter += 1;
 			row.addView(t);
 		}
 		table.addView(row, new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
@@ -80,6 +80,7 @@ public class SheetFragment extends Fragment{ /*
 		String[] string;
 		string = res.getStringArray(R.array.character_array);
 
+		int counter = 0;
 		for (int i = 0; i < string.length; i++) {
 			row = new TableRow(inputView.getContext());
 			t = new TextView(inputView.getContext());
@@ -88,7 +89,7 @@ public class SheetFragment extends Fragment{ /*
 			row.addView(t);
 			for (int j = 0; j < players.size(); j++) {
 				t = new TextView(inputView.getContext());
-				t.setText("0");
+				t.setText(new Integer(logic.getDataAt(counter, j)).toString());
 				t.setPadding(8,8,8,8);
 				row.addView(t);
 			}
@@ -105,7 +106,7 @@ public class SheetFragment extends Fragment{ /*
 			row.addView(t);
 			for (int j = 0; j < players.size(); j++) {
 				t = new TextView(inputView.getContext());
-				t.setText("0");
+				t.setText(new Integer(logic.getDataAt(counter, j)).toString());
 				t.setPadding(8,8,8,8);
 				row.addView(t);
 			}
@@ -122,7 +123,7 @@ public class SheetFragment extends Fragment{ /*
 			row.addView(t);
 			for (int j = 0; j < players.size(); j++) {
 				t = new TextView(inputView.getContext());
-				t.setText("0");
+				t.setText(new Integer(logic.getDataAt(counter, j)).toString());
 				t.setPadding(8,8,8,8);
 				row.addView(t);
 			}

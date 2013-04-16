@@ -30,8 +30,8 @@ public class GameLogic {
 	
 	public ArrayList<String> getLogArrayList() {
 		ArrayList<String> r = new ArrayList<String>();
-		for (int i = 0; i < this.cards.size(); i++ ) {
-			r.add(this.cards.get(i).toString());
+		for (int i = 0; i < this.log.size(); i++ ) {
+			r.add(this.log.get(i).getString());
 		}
 		return r;
 	}
@@ -47,6 +47,16 @@ public class GameLogic {
 	public void addKnownCard(int id) {
 		this.log.add(new LogItem(id));
 	}
+	
+	public void updateSheetData() {
+		// This needs to be called so that getDataAt returns things that are up to date
+		
+	}
+	
+	public int getDataAt(int card_id, int player_id) {
+		return 0;
+	}
+	
 	
 	public class LogItem {
 		int type; // What type this log is, 0 for normal thing and 1 for just known card added

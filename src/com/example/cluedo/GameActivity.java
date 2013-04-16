@@ -10,13 +10,14 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
 
 
-public class GameActivity extends Activity {
+public class GameActivity extends FragmentActivity {
 
 	
 	ArrayList<String> names;// = new ArrayList<String>();

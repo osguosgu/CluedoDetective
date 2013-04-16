@@ -55,8 +55,13 @@ public class InputFragment extends Fragment {
 				.setIcon(R.drawable.agent)
 				.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 				    public void onClick(DialogInterface dialog, int whichButton) {
-				    	String[] array = InputFragment.this.getSpinnersData();
-				    	((GameActivity)getActivity()).getLogic().addSubmission("C: "+ array[1] +" W: "+ array[2] +" R: "+ array[3]);
+				    	//((GameActivity)getActivity()).getLogic().addSubmission("C: "+ array[1] +" W: "+ array[2] +" R: "+ array[3]);
+				    	((GameActivity)getActivity()).getLogic().addInput(
+				    			((Spinner)getActivity().findViewById(R.id.player_spinner)).getSelectedItemPosition(),
+				    			((Spinner)getActivity().findViewById(R.id.player_spinner2)).getSelectedItemPosition(),
+				    			((Spinner)getActivity().findViewById(R.id.room_spinner)).getSelectedItemPosition(),
+				    			((Spinner)getActivity().findViewById(R.id.weapon_spinner)).getSelectedItemPosition(),
+				    			((Spinner)getActivity().findViewById(R.id.suspect_spinner)).getSelectedItemPosition());
 				    	
 				    	//Toast.makeText(inputView.getContext(),"SUBMITTED:"+'\n'+array[1] +'\n'+ array[2] +'\n'+
 				    	//		array[3] + '\n'+'\n'+ array[4].toUpperCase() + " REVEALED CARD!" , Toast.LENGTH_LONG).show();

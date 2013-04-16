@@ -1,7 +1,5 @@
 package com.example.cluedo;
-import android.app.AlertDialog;
 import android.app.ListFragment;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +8,13 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class LogFragment extends ListFragment{
 		
 	View logView;
 	int currentItem;
+	ArrayAdapter<String> logAdapter;
+	ListView list;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -23,12 +22,27 @@ public class LogFragment extends ListFragment{
 		//System.out.println(getArguments());
 		//this.logic = (GameLogic) getArguments().getSerializable("GameLogic");
 		
-		logView = inflater.inflate(R.layout.tab_3_layout,null);
+		logView = inflater.inflate(R.layout.tab_3_layout, null);
+		logAdapter = new ArrayAdapter<String>(inflater.getContext(), android.R.layout.simple_list_item_1, ((GameActivity)getActivity()).getLogic().getLogArrayList());
 		
-		ArrayAdapter<String> logAdapter = new ArrayAdapter<String>(inflater.getContext(), android.R.layout.simple_list_item_1, ((GameActivity)getActivity()).getLogic().logItems);
-		ListView list = (ListView) logView.findViewById(android.R.id.list);
-		System.out.println(list);
+		list = (ListView)logView.findViewById(android.R.id.list);
+		
+		System.out.println("Tämmönen täälä");
+		System.out.println(list.getOnItemClickListener());
+		list.setOnItemClickListener(new OnItemClickListener() {
+		    public void onItemClick(AdapterView<?> parent, View view, int position,
+		            long id) {
+		        System.out.println("VITTU KYRPÄ PILLU");
+		    	//Toast.makeText(getBaseContext(), "Perse!", Toast.LENGTH_LONG).show();
+		    }
+		});
+		System.out.println("Tämmönen täälä");
+		System.out.println(list.getOnItemClickListener());
+		
 	    list.setAdapter(logAdapter);
+		return logView;
+
+		/*
 	    list.setOnItemClickListener(new OnItemClickListener() {
 	    	@Override
 	        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -49,12 +63,13 @@ public class LogFragment extends ListFragment{
 		    		 .setNegativeButton(android.R.string.no, null).show();
 	        			
 	        }
-	    }); 
-		//system.out.println
-		//String []list = {"jes"};
-		//System.out.println(list);
-		//logic.logAdapter = new ArrayAdapter<String>(logView.getContext(), android.R.layout.simple_list_item_1, list);
-	    //setListAdapter(logAdapter);
-		return logView;
+	    });
+	    */
+	}
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
 	}
 }
