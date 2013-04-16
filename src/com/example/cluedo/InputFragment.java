@@ -1,5 +1,6 @@
 package com.example.cluedo;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -25,6 +26,8 @@ public class InputFragment extends Fragment {
 		System.out.println("Kutsuttiin input fragmentin oncreateviewia");
 		
 		inputView = inflater.inflate(R.layout.tab_2_layout, container, false);
+		
+
 		
 		Spinner sp1 = (Spinner) inputView.findViewById(R.id.player_spinner);
 		ArrayList<String> names = ((GameActivity)getActivity()).getLogic().getNamesArrayList();
@@ -55,11 +58,16 @@ public class InputFragment extends Fragment {
 				.setIcon(R.drawable.agent)
 				.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 				    public void onClick(DialogInterface dialog, int whichButton) {
-				    	String[] array = InputFragment.this.getSpinnersData();
-				    	((GameActivity)getActivity()).getLogic().addSubmission("C: "+ array[1] +" W: "+ array[2] +" R: "+ array[3]);
+				    	//((GameActivity)getActivity()).getLogic().addSubmission("C: "+ array[1] +" W: "+ array[2] +" R: "+ array[3]);
+				    	((GameActivity)getActivity()).getLogic().addInput(
+				    			((Spinner)getActivity().findViewById(R.id.player_spinner)).getSelectedItemPosition(),
+				    			((Spinner)getActivity().findViewById(R.id.player_spinner2)).getSelectedItemPosition(),
+				    			((Spinner)getActivity().findViewById(R.id.room_spinner)).getSelectedItemPosition(),
+				    			((Spinner)getActivity().findViewById(R.id.weapon_spinner)).getSelectedItemPosition(),
+				    			((Spinner)getActivity().findViewById(R.id.suspect_spinner)).getSelectedItemPosition());
 				    	
 				    	//Toast.makeText(inputView.getContext(),"SUBMITTED:"+'\n'+array[1] +'\n'+ array[2] +'\n'+
-				    	//		array[3] + '\n'+'\n'+ array[4].toUpperCase() + " REVEALED CARD!" , Toast.LENGTH_LONG).show();
+				    		//	array[3] + '\n'+'\n'+ array[4].toUpperCase() + " REVEALED CARD!" , Toast.LENGTH_LONG).show();
 				    }
 				})
 				 .setNegativeButton(android.R.string.no, null).show();
@@ -81,29 +89,55 @@ public class InputFragment extends Fragment {
 		};
 		hit.setOnClickListener(handler);
 		
-		/*
-		Button add_card = (Button)inputView.findViewById(R.id.add_card_button);
+		ArrayList<String> all = new ArrayList<String>(Arrays.asList(((GameActivity)getActivity()).getResources().getStringArray(R.array.character_array)));
+		all.addAll(Arrays.asList(((GameActivity)getActivity()).getResources().getStringArray(R.array.weapon_array)));
+		all.addAll(Arrays.asList(((GameActivity)getActivity()).getResources().getStringArray(R.array.room_array)));
+		
+		Button hit2 = (Button)inputView.findViewById(R.id.add_card_button);
+		
 		View.OnClickListener handler2 = new View.OnClickListener() {
-
 			@Override
 			public void onClick(View inputView) {
-				//InputFragment.this.addKnownCard();
-				
+					System.out.println("Kutsuttu add cardia");
+					final ArrayList<Integer> mSelectedItems = new ArrayList<Integer>();  // Where we track the selected items
+					System.out.println("Kutsuttu add cardia1");
+					new AlertDialog.Builder(inputView.getContext())
+
+					.setTitle("haistakaa vittu")
+
+					.setMultiChoiceItems(R.array.character_array, null,
+	                      new DialogInterface.OnMultiChoiceClickListener() {
+					               @Override
+					               
+					               public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+					            	   System.out.println("Kutsuttu add cardia2");
+					                   if (isChecked) {
+					                       // If the user checked the item, add it to the selected items
+					                       mSelectedItems.add(which);
+					                   } else if (mSelectedItems.contains(which)) {
+					                       // Else, if the item is already in the array, remove it 
+					                       mSelectedItems.remove(Integer.valueOf(which));
+					                   }
+					               }
+					           })
+					    // Set the action buttons
+		           .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+		               @Override
+		               public void onClick(DialogInterface dialog, int id) {
+		            	   for (int i : mSelectedItems) {
+		            	   ((GameActivity)getActivity()).getLogic().addKnownCard(i);
+		            	   }
+		               }
+		           })
+		           .setNegativeButton("no", new DialogInterface.OnClickListener() {
+		               @Override
+		               public void onClick(DialogInterface dialog, int id) {
+		                   
+		               }
+		           }).show();
 			}
-		};*/
-		
-		
-		//add_card.setOnClickListener(handler2);
-		
-		//System.out.println(names.get(0));
-		/*
-		System.out.println(R.array.character_array);
-		System.out.println(container.getContext());
-		adapter = ArrayAdapter.createFromResource(container.getContext() , R.array.character_array, android.R.layout.simple_spinner_dropdown_item);
-		System.out.println(R.array.character_array);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		sp.setAdapter(adapter);
-		*/
+		};
+		hit2.setOnClickListener(handler2);
 		
 		return inputView;
 	}
