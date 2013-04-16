@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 
 
@@ -56,10 +59,53 @@ public class GameActivity extends Activity {
 		tab.setTabListener(t3);
 		actionBar.addTab(tab);
 		
-		
-		
-		System.out.println("PEPEPEPEPEPEEP");
 	}
+	
+	public boolean viewInfo(MenuItem menu){
+		new AlertDialog.Builder(this)
+		.setTitle("Cluedo Detective")
+		.setMessage("by: Rihis&Osku_")
+		.setIcon(R.drawable.agent)
+		.setPositiveButton(android.R.string.yes, null).show();
+		return true;
+	}
+
+	public boolean viewHelp(MenuItem menu){
+		ActionBar actionBar = getActionBar();
+		switch (actionBar.getSelectedTab().getPosition()) {
+		case 0:
+			new AlertDialog.Builder(this)
+			.setTitle(R.string.help)
+			.setMessage("\nEkan tabin ohje\n")
+			.setIcon(R.drawable.agent)
+			.setPositiveButton(android.R.string.yes, null).show();
+			break;
+		case 1:
+			new AlertDialog.Builder(this)
+			.setTitle(R.string.help)
+			.setMessage("\nJoujou lisätään tapahtumia\n")
+			.setIcon(R.drawable.agent)
+			.setPositiveButton(android.R.string.yes, null).show();
+			break;
+		case 2:
+			new AlertDialog.Builder(this)
+			.setTitle(R.string.help)
+			.setMessage("\nHehhee haluutkos poistaa virheitä\n")
+			.setIcon(R.drawable.agent)
+			.setPositiveButton(android.R.string.yes, null).show();
+			break;
+		}
+		return true;
+
+	}
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.game, menu);
+		return true;	
+
+	}
+
 	
 	private class TabListener<T extends Fragment> implements ActionBar.TabListener {
 		private Fragment mFragment;
