@@ -13,7 +13,6 @@ public class GameLogic {
 	int playerid, card_amount;
 	ArrayAdapter<String> logAdapter;
 	ArrayList<Integer> cards;
-	
 	ArrayList<LogItem> log;
 	
 	GridStatus[][] grid;
@@ -60,6 +59,12 @@ public class GameLogic {
 	
 	public void updateSheetData() {
 		// This needs to be called so that getDataAt returns things that are up to date
+<<<<<<< HEAD
+		
+	}
+	
+	public int getDataAt(int card_id, int player_id) {
+=======
 		grid = new GridStatus[this.card_amount][this.names.size()];
 		for (int i = 0; i < this.card_amount; i++){
 			for (int j = 0; j < this.names.size(); j++) {
@@ -85,6 +90,7 @@ public class GameLogic {
 		System.out.println(this.grid);
 		if (this.grid[card_id][player_id].is_known)
 			return 1;
+>>>>>>> 29c34e8341c4d6ab154022ee724f415e2c759f01
 		return 0;
 	}
 	

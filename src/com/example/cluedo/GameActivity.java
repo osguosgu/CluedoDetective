@@ -10,13 +10,14 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
 
 
-public class GameActivity extends Activity {
+public class GameActivity extends FragmentActivity {
 
 	
 	ArrayList<String> names;// = new ArrayList<String>();
@@ -36,7 +37,15 @@ public class GameActivity extends Activity {
 		this.names = intent.getStringArrayListExtra(MainActivity.EXTRA_NAMES_LIST);
 		this.cards = intent.getIntegerArrayListExtra(AddCardsActivity.EXTRA_MY_CARDS_LIST);
 		this.playerid = intent.getIntExtra(MainActivity.EXTRA_PLAYER_ID, 0);
-		this.logic =  new GameLogic(this.names, this.active, this.cards, this.playerid);
+		
+		card_count = getResources().getStringArray(R.array.character_array).length;
+		card_count += getResources().getStringArray(R.array.room_array).length;
+		card_count += getResources().getStringArray(R.array.weapon_array).length;
+		
+		this.logic =  new GameLogic(this.names, this.active, this.cards, this.playerid, this.card_count);
+		
+		for (Integer i : cards)
+			this.logic.addKnownCard(i);
 		
 		ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);

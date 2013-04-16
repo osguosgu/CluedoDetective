@@ -6,17 +6,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class LogFragment extends Fragment{
 		
-
 	int currentItem;
+<<<<<<< HEAD
+=======
 	View logView;
+>>>>>>> 29c34e8341c4d6ab154022ee724f415e2c759f01
 	ArrayAdapter<String> logAdapter;
 	ListView list;
 	@Override
@@ -26,6 +25,30 @@ public class LogFragment extends Fragment{
 		//System.out.println(getArguments());
 		//this.logic = (GameLogic) getArguments().getSerializable("GameLogic");
 		
+<<<<<<< HEAD
+		logView = inflater.inflate(R.layout.tab_3_layout, null);
+		logAdapter = new ArrayAdapter<String>(inflater.getContext(), android.R.layout.simple_list_item_1, ((GameActivity)getActivity()).getLogic().getLogArrayList());
+		
+		list = (ListView)logView.findViewById(android.R.id.list);
+		
+		System.out.println("Tämmönen täälä");
+		return logView;
+		/*System.out.println(list.getOnItemClickListener());
+		list.setOnItemClickListener(new OnItemClickListener() {
+		    public void onItemClick(AdapterView<?> parent, View view, int position,
+		            long id) {
+		        System.out.println("VITTU KYRPÄ PILLU");
+		    	//Toast.makeText(getBaseContext(), "Perse!", Toast.LENGTH_LONG).show();
+		    }
+		});
+		System.out.println("Tämmönen täälä");
+		System.out.println(list.getOnItemClickListener());
+		
+	    list.setAdapter(logAdapter);
+		return logView;
+
+		/*
+=======
 		
 		logView = inflater.inflate(R.layout.tab_3_layout, null);
 		logAdapter = new ArrayAdapter<String>(inflater.getContext(), android.R.layout.simple_list_item_1, ((GameActivity)getActivity()).getLogic().getLogArrayList());
@@ -39,6 +62,7 @@ public class LogFragment extends Fragment{
 		System.out.println("Tämmönen täälä");
 		System.out.println(list.getOnItemClickListener());
 
+>>>>>>> 29c34e8341c4d6ab154022ee724f415e2c759f01
 	    list.setOnItemClickListener(new OnItemClickListener() {
 	    	@Override
 	        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -59,6 +83,10 @@ public class LogFragment extends Fragment{
 		    		 .setNegativeButton(android.R.string.no, null).show();
 	        			
 	        }
+<<<<<<< HEAD
+	    });*/
+	    
+=======
 	    });
 		System.out.println("Tämmönen täälä");
 		System.out.println(list.getOnItemClickListener());
@@ -90,6 +118,7 @@ public class LogFragment extends Fragment{
 	        }
 	    });
 	    */
+>>>>>>> 29c34e8341c4d6ab154022ee724f415e2c759f01
 	}
 	
 	
