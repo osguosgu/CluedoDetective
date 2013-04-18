@@ -3,8 +3,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 public class InputFragment extends Fragment {
 	
@@ -89,23 +90,28 @@ public class InputFragment extends Fragment {
 		};
 		hit.setOnClickListener(handler);
 		
-		ArrayList<String> all = new ArrayList<String>(Arrays.asList(((GameActivity)getActivity()).getResources().getStringArray(R.array.character_array)));
-		all.addAll(Arrays.asList(((GameActivity)getActivity()).getResources().getStringArray(R.array.weapon_array)));
-		all.addAll(Arrays.asList(((GameActivity)getActivity()).getResources().getStringArray(R.array.room_array)));
+		//ArrayList<String> all = new ArrayList<String>(Arrays.asList(((GameActivity)getActivity()).getResources().getStringArray(R.array.character_array)));
+		//all.addAll(Arrays.asList(((GameActivity)getActivity()).getResources().getStringArray(R.array.weapon_array)));
+		//all.addAll(Arrays.asList(((GameActivity)getActivity()).getResources().getStringArray(R.array.room_array)));
 		
 		Button hit2 = (Button)inputView.findViewById(R.id.add_card_button);
 		
-		View.OnClickListener handler2 = new View.OnClickListener() {
+		hit2.setOnClickListener( new View.OnClickListener() {
 			@Override
 			public void onClick(View inputView) {
 					System.out.println("Kutsuttu add cardia");
 					final ArrayList<Integer> mSelectedItems = new ArrayList<Integer>();  // Where we track the selected items
 					System.out.println("Kutsuttu add cardia1");
+					
+					Resources res = getResources();
+					ArrayList<String> allcards = new ArrayList<String>(Arrays.asList(res.getStringArray(R.array.character_array)));
+					allcards.addAll(Arrays.asList(res.getStringArray(R.array.weapon_array)));
+					allcards.addAll(Arrays.asList(res.getStringArray(R.array.room_array)));
+					
 					new AlertDialog.Builder(inputView.getContext())
 
 					.setTitle("haistakaa vittu")
-
-					.setMultiChoiceItems(R.array.character_array, null,
+					.setMultiChoiceItems(allcards.toArray(new CharSequence[allcards.size()]), null,
 	                      new DialogInterface.OnMultiChoiceClickListener() {
 					               @Override
 					               
@@ -121,7 +127,7 @@ public class InputFragment extends Fragment {
 					               }
 					           })
 					    // Set the action buttons
-		           .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+		           .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 		               @Override
 		               public void onClick(DialogInterface dialog, int id) {
 		            	   for (int i : mSelectedItems) {
@@ -129,15 +135,13 @@ public class InputFragment extends Fragment {
 		            	   }
 		               }
 		           })
-		           .setNegativeButton("no", new DialogInterface.OnClickListener() {
+		           .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
 		               @Override
 		               public void onClick(DialogInterface dialog, int id) {
-		                   
-		               }
-		           }).show();
+		           }
+		        }).show();
 			}
-		};
-		hit2.setOnClickListener(handler2);
+		});
 		
 		return inputView;
 	}
