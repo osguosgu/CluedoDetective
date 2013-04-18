@@ -5,6 +5,7 @@ import java.util.Arrays;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,7 +52,11 @@ public class InputFragment extends Fragment {
 			public void onClick(View inputView) {
 				System.out.println("Kutsuttu submit suspectionia");
 				
-				String[] array = this.getSpinnersData();
+				final String[] array = this.getSpinnersData();
+				if (array[0].equals(array[4])){
+					Toast.makeText(inputView.getContext(),"Asker cannot be the revealer!\nNo Submission done.", Toast.LENGTH_SHORT).show();
+					return;
+					}
 				new AlertDialog.Builder(inputView.getContext())
 				.setTitle(array[0].toUpperCase() +" SUSPECTS:")
 				.setMessage(array[1] +'\n'+ array[2] +'\n'+ array[3])
@@ -66,8 +71,8 @@ public class InputFragment extends Fragment {
 				    			((Spinner)getActivity().findViewById(R.id.weapon_spinner)).getSelectedItemPosition(),
 				    			((Spinner)getActivity().findViewById(R.id.suspect_spinner)).getSelectedItemPosition());
 				    	
-				    	//Toast.makeText(inputView.getContext(),"SUBMITTED:"+'\n'+array[1] +'\n'+ array[2] +'\n'+
-				    		//	array[3] + '\n'+'\n'+ array[4].toUpperCase() + " REVEALED CARD!" , Toast.LENGTH_LONG).show();
+				    	Toast.makeText(InputFragment.this.getActivity().getBaseContext(),"SUBMITTED:"+'\n'+array[1] +'\n'+ array[2] +'\n'+
+				    			array[3] + '\n'+'\n'+ array[4].toUpperCase() + " REVEALED CARD!" , Toast.LENGTH_LONG).show();
 				    }
 				})
 				 .setNegativeButton(android.R.string.no, null).show();
@@ -89,28 +94,33 @@ public class InputFragment extends Fragment {
 		};
 		hit.setOnClickListener(handler);
 		
-		ArrayList<String> all = new ArrayList<String>(Arrays.asList(((GameActivity)getActivity()).getResources().getStringArray(R.array.character_array)));
-		all.addAll(Arrays.asList(((GameActivity)getActivity()).getResources().getStringArray(R.array.weapon_array)));
-		all.addAll(Arrays.asList(((GameActivity)getActivity()).getResources().getStringArray(R.array.room_array)));
+		//ArrayList<String> all = new ArrayList<String>(Arrays.asList(((GameActivity)getActivity()).getResources().getStringArray(R.array.character_array)));
+		//all.addAll(Arrays.asList(((GameActivity)getActivity()).getResources().getStringArray(R.array.weapon_array)));
+		//all.addAll(Arrays.asList(((GameActivity)getActivity()).getResources().getStringArray(R.array.room_array)));
 		
 		Button hit2 = (Button)inputView.findViewById(R.id.add_card_button);
 		
-		View.OnClickListener handler2 = new View.OnClickListener() {
+		hit2.setOnClickListener( new View.OnClickListener() {
 			@Override
 			public void onClick(View inputView) {
-					System.out.println("Kutsuttu add cardia");
+					//System.out.println("Kutsuttu add cardia");
 					final ArrayList<Integer> mSelectedItems = new ArrayList<Integer>();  // Where we track the selected items
-					System.out.println("Kutsuttu add cardia1");
+					//System.out.println("Kutsuttu add cardia1");
+					
+					Resources res = getResources();
+					ArrayList<String> allcards = new ArrayList<String>(Arrays.asList(res.getStringArray(R.array.character_array)));
+					allcards.addAll(Arrays.asList(res.getStringArray(R.array.weapon_array)));
+					allcards.addAll(Arrays.asList(res.getStringArray(R.array.room_array)));
+					
 					new AlertDialog.Builder(inputView.getContext())
 
-					.setTitle("haistakaa vittu")
-
-					.setMultiChoiceItems(R.array.character_array, null,
+					.setTitle("Select Known cards")
+					.setMultiChoiceItems(allcards.toArray(new CharSequence[allcards.size()]), null,
 	                      new DialogInterface.OnMultiChoiceClickListener() {
 					               @Override
 					               
 					               public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-					            	   System.out.println("Kutsuttu add cardia2");
+					            	   //System.out.println("Kutsuttu add cardia2");
 					                   if (isChecked) {
 					                       // If the user checked the item, add it to the selected items
 					                       mSelectedItems.add(which);
@@ -121,23 +131,30 @@ public class InputFragment extends Fragment {
 					               }
 					           })
 					    // Set the action buttons
-		           .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+		           .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 		               @Override
 		               public void onClick(DialogInterface dialog, int id) {
-		            	   for (int i : mSelectedItems) {
-		            	   ((GameActivity)getActivity()).getLogic().addKnownCard(i);
+		            	   if (mSelectedItems.size() ==0){
+		            		   Toast.makeText(InputFragment.this.getActivity().getBaseContext(), "No cards added", Toast.LENGTH_SHORT).show();
+		            		   return;
 		            	   }
+		            	   int count = 0;
+		            	   for (int i : mSelectedItems) {
+		            		   if(((GameActivity)getActivity()).getLogic().addKnownCard(i)) count += 1;
+		            	   }
+		            	   if (count == 0) Toast.makeText(InputFragment.this.getActivity().getBaseContext(), "You already know this!", Toast.LENGTH_SHORT).show();
+		            	   else if (count == 1) Toast.makeText(InputFragment.this.getActivity().getBaseContext(), count + " card added!", Toast.LENGTH_SHORT).show();
+		            	   else Toast.makeText(InputFragment.this.getActivity().getBaseContext(), count +" cards added!", Toast.LENGTH_SHORT).show();
 		               }
+		               
 		           })
-		           .setNegativeButton("no", new DialogInterface.OnClickListener() {
+		           .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
 		               @Override
 		               public void onClick(DialogInterface dialog, int id) {
-		                   
-		               }
-		           }).show();
+		           }
+		        }).show();
 			}
-		};
-		hit2.setOnClickListener(handler2);
+		});
 		
 		return inputView;
 	}

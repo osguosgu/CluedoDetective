@@ -42,7 +42,7 @@ public class GameActivity extends FragmentActivity {
 		card_count += getResources().getStringArray(R.array.room_array).length;
 		card_count += getResources().getStringArray(R.array.weapon_array).length;
 		
-		this.logic =  new GameLogic(this.names, this.active, this.cards, this.playerid, this.card_count);
+		this.logic =  new GameLogic(this.names, this.active, this.cards, this.playerid, this.card_count, getResources());
 		
 		for (Integer i : cards)
 			this.logic.addKnownCard(i);

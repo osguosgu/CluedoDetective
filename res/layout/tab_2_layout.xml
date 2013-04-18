@@ -70,18 +70,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/hit" />
-    
-    <Spinner
-		android:id="@+id/player_spinnerX"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-		android:prompt="@string/suspect_prompt"
-		android:spinnerMode="dialog" />
-    
+
     <Button
         android:id="@+id/add_card_button"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/add_card" />
 
 </LinearLayout>

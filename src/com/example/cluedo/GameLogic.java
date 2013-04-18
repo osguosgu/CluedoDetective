@@ -3,9 +3,11 @@ package com.example.cluedo;
 
 import java.util.ArrayList;
 
+import android.app.Activity;
+import android.content.res.Resources;
 import android.widget.ArrayAdapter;
 
-public class GameLogic {
+public class GameLogic extends Activity{
 
 	
 	ArrayList<String> names;
@@ -15,10 +17,10 @@ public class GameLogic {
 	ArrayList<Integer> cards;
 	
 	ArrayList<LogItem> log;
-	
+	Resources res;
 	GridStatus[][] grid;
 	
-	public GameLogic(ArrayList<String> names, boolean[] active, ArrayList<Integer> cards, int playerid, int card_amount){
+	public GameLogic(ArrayList<String> names, boolean[] active, ArrayList<Integer> cards, int playerid, int card_amount, Resources resource){
 		System.out.println(names);
 		System.out.println(active);
 		System.out.println(cards);
@@ -30,6 +32,7 @@ public class GameLogic {
 		this.card_amount = card_amount;
 		log = new ArrayList<LogItem>();
 		this.updateSheetData();
+		res = resource;
 	}
 	
 	public ArrayList<String> getNamesArrayList(){
@@ -49,13 +52,18 @@ public class GameLogic {
 	}
 	
 	public void addInput(int asker, int answerer, int room_card, int weapon_card, int character_card) {
-		if (answerer >= this.names.size())
-			return;
+		
 		this.log.add(new LogItem(asker, answerer, room_card, weapon_card, character_card));
 	}
 	
-	public void addKnownCard(int id) {
-		this.log.add(new LogItem(id));
+	public boolean addKnownCard(int id) {
+		LogItem logItem = new LogItem(id);
+		for (LogItem l : log){
+			if (l.known_card == id) return false;
+		} 
+		this.log.add(logItem);
+		return true;
+		
 	}
 	
 	public void updateSheetData() {
@@ -101,6 +109,7 @@ public class GameLogic {
 			this.known_card = card;
 		}
 		public LogItem(int asker, int answerer, int room_card, int weapon_card, int character_card) {
+			type = 0;
 			this.asker = asker;
 			this.answerer = answerer;
 			this.room_card = room_card;
@@ -108,15 +117,23 @@ public class GameLogic {
 			this.weapon_card = weapon_card;
 		}
 		public String getString() {
+			String [] characters = res.getStringArray(R.array.character_array);
+			String [] weapons = res.getStringArray(R.array.weapon_array);
+			String [] rooms = res.getStringArray(R.array.room_array);
 			if (type == 0) {
-				return "Asked: " + this.room_card + this.weapon_card + this.character_card;
+				System.out.println("been there!!!!!");
+				return characters[this.character_card] +", "+ weapons[this.weapon_card] +", "+ rooms[this.room_card];
 			}
 			if (type == 1) {
-				return "Known card id was: " + this.known_card;
+				System.out.println(this.known_card);
+				if (this.known_card < 6) return "Added known card: " + characters[this.known_card];
+				else if (this.known_card < 12 ) return "Added known card: " + weapons[this.known_card - 6];
+				else return "Added known card: " + rooms[this.known_card - 12];	
 			}
 			return "Error";
 		}
 	}
+	
 	public class GridStatus {
 		Boolean is_known;
 		Boolean can_have;
