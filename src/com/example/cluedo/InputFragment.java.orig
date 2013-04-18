@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 public class InputFragment extends Fragment {
 	
@@ -106,7 +105,11 @@ public class InputFragment extends Fragment {
 			public void onClick(View inputView) {
 					//System.out.println("Kutsuttu add cardia");
 					final ArrayList<Integer> mSelectedItems = new ArrayList<Integer>();  // Where we track the selected items
+<<<<<<< HEAD
 					//System.out.println("Kutsuttu add cardia1");
+=======
+					System.out.println("Kutsuttu add cardia1");
+>>>>>>> a39f1f6cc9e9d5bd8d6f6909f1ad7b733d00d0a1
 					
 					Resources res = getResources();
 					ArrayList<String> allcards = new ArrayList<String>(Arrays.asList(res.getStringArray(R.array.character_array)));
@@ -115,7 +118,11 @@ public class InputFragment extends Fragment {
 					
 					new AlertDialog.Builder(inputView.getContext())
 
+<<<<<<< HEAD
 					.setTitle("Select Known cards")
+=======
+					.setTitle("haistakaa vittu")
+>>>>>>> a39f1f6cc9e9d5bd8d6f6909f1ad7b733d00d0a1
 					.setMultiChoiceItems(allcards.toArray(new CharSequence[allcards.size()]), null,
 	                      new DialogInterface.OnMultiChoiceClickListener() {
 					               @Override
