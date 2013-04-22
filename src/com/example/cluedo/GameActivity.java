@@ -8,9 +8,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -114,7 +116,26 @@ public class GameActivity extends FragmentActivity {
 		return true;	
 
 	}
-
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+	    if (keyCode == KeyEvent.KEYCODE_BACK) {
+	        //do whatever you need for the hardware 'back' button
+	    	new AlertDialog.Builder(this)
+			.setTitle(R.string.are_you_sure_title)
+			.setMessage(R.string.are_you_sure)
+			.setIcon(R.drawable.agent)
+			.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+			    public void onClick(DialogInterface dialog, int whichButton) {
+			    	finish();
+			    	
+			    }})
+			 .setNegativeButton(android.R.string.no, null).show();
+			    
+			
+	        return true;
+	    }
+	    return super.onKeyDown(keyCode, event);
+	}
 	
 	private class TabListener<T extends Fragment> implements ActionBar.TabListener {
 		private Fragment mFragment;

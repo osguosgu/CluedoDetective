@@ -19,7 +19,7 @@ public class GameLogic extends Activity{
 	ArrayList<LogItem> log;
 	Resources res;
 	GridStatus[][] grid;
-	
+
 	public GameLogic(ArrayList<String> names, boolean[] active, ArrayList<Integer> cards, int playerid, int card_amount, Resources resource){
 		System.out.println(names);
 		System.out.println(active);
@@ -33,6 +33,7 @@ public class GameLogic extends Activity{
 		log = new ArrayList<LogItem>();
 		this.updateSheetData();
 		res = resource;
+
 	}
 	
 	public ArrayList<String> getNamesArrayList(){
@@ -69,31 +70,58 @@ public class GameLogic extends Activity{
 	public void updateSheetData() {
 		// This needs to be called so that getDataAt returns things that are up to date
 		grid = new GridStatus[this.card_amount][this.names.size()];
+		int counter = 1;
 		for (int i = 0; i < this.card_amount; i++){
 			for (int j = 0; j < this.names.size(); j++) {
 				grid[i][j] = new GridStatus();
 			}
 		}
-		int guess_id = 0;
+		//int guess_id = 0;
 		for (LogItem i : log) {
-			if (i.type == 0) {
-				if (i.answerer == this.playerid){
-					grid[i.known_card][i.asker].is_known = true;  
-				}
-			}
+			
 			if (i.type == 1) {
-				for (int j = 0; j < this.names.size(); j ++) {
-					grid[i.known_card][j].is_known = true;
+				for (int j = 0; j < this.names.size(); j++) {
+					grid[i.known_card][this.playerid].is_known = true;
+				}
+				
+			}
+			if (i.type == 0) {
+				int cards = 6; //how many character and weapon cards there is
+				for (int j = i.asker + 1 ; j < this.names.size(); j++){
+					if (j % this.names.size() != i.answerer){
+						grid[i.character_card][j].can_have = false;
+						grid[i.weapon_card + cards][j].can_have = false;
+						grid[i.room_card + cards*2][j].can_have = false;
+					}
+					else if(j == i.answerer){
+						if (!grid[i.character_card][this.playerid].is_known)
+							grid[i.character_card][j].quess = counter;
+						
+						if (!grid[i.weapon_card + cards][this.playerid].is_known)
+							grid[i.weapon_card + cards][j].quess = counter;
+						
+						if (!grid[i.room_card + cards*2][this.playerid].is_known)
+							grid[i.room_card + cards*2][j].quess = counter;
+						counter += 1;
+						break;
+					}
 				}
 			}
 		}
+		this.conclusion();
+	}	
+	public void conclusion(){
+		
 	}
-	
-	public int getDataAt(int card_id, int player_id) {
-		System.out.println(this.grid);
+	public String getDataAt(int card_id, int player_id) {
+		//System.out.println(this.grid);
 		if (this.grid[card_id][player_id].is_known)
-			return 1;
-		return 0;
+			return "!!";
+		else if (this.grid[card_id][player_id].quess != 0)
+			return String.valueOf(this.grid[card_id][player_id].quess);
+		else if (!this.grid[card_id][player_id].can_have)
+			return "X";
+		return "";
 	}
 	
 	
@@ -121,11 +149,11 @@ public class GameLogic extends Activity{
 			String [] weapons = res.getStringArray(R.array.weapon_array);
 			String [] rooms = res.getStringArray(R.array.room_array);
 			if (type == 0) {
-				System.out.println("been there!!!!!");
+				//System.out.println("been there!!!!!");
 				return characters[this.character_card] +", "+ weapons[this.weapon_card] +", "+ rooms[this.room_card];
 			}
 			if (type == 1) {
-				System.out.println(this.known_card);
+				//System.out.println(this.known_card);
 				if (this.known_card < 6) return "Added known card: " + characters[this.known_card];
 				else if (this.known_card < 12 ) return "Added known card: " + weapons[this.known_card - 6];
 				else return "Added known card: " + rooms[this.known_card - 12];	
@@ -135,11 +163,14 @@ public class GameLogic extends Activity{
 	}
 	
 	public class GridStatus {
+		
 		Boolean is_known;
 		Boolean can_have;
+		int quess;
 		public GridStatus() {
 			is_known = false;
 			can_have = true;
+			quess = 0;
 		}
 	}
 }

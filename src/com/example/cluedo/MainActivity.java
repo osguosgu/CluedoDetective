@@ -147,10 +147,10 @@ public class MainActivity extends Activity {
 		LinearLayout layout = (LinearLayout) findViewById(R.id.linearLayout1);
 		for (int i = 0; i < sum; i ++) {
 			LinearLayout vlayout = (LinearLayout) layout.findViewById(i);
-			String jes = ((EditText) vlayout.findViewById(R.id.editTextP)).getText().toString();
+			String player_name = ((EditText) vlayout.findViewById(R.id.editTextP)).getText().toString();
 			
-			if (!jes.equals("")){
-				names.add( jes );
+			if (!player_name.equals("")){
+				names.add( player_name );
 				active.add(true);
 			}
 			else if(i == playerid){

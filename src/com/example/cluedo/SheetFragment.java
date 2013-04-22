@@ -104,7 +104,7 @@ public class SheetFragment extends Fragment{ /*
 			row.addView(t);
 			for (int j = 0; j < players.size(); j++) {
 				t = new TextView(inputView.getContext());
-				t.setText(new Integer(logic.getDataAt(counter, j)).toString());
+				t.setText(logic.getDataAt(counter, j));
 				t.setPadding(8,8,8,8);
 				row.addView(t);
 			}
@@ -121,7 +121,7 @@ public class SheetFragment extends Fragment{ /*
 			row.addView(t);
 			for (int j = 0; j < players.size(); j++) {
 				t = new TextView(inputView.getContext());
-				t.setText(new Integer(logic.getDataAt(counter, j)).toString());
+				t.setText(logic.getDataAt(counter, j));
 				t.setPadding(8,8,8,8);
 				row.addView(t);
 			}
@@ -138,7 +138,7 @@ public class SheetFragment extends Fragment{ /*
 			row.addView(t);
 			for (int j = 0; j < players.size(); j++) {
 				t = new TextView(inputView.getContext());
-				t.setText(new Integer(logic.getDataAt(counter, j)).toString());
+				t.setText(logic.getDataAt(counter, j));
 				t.setPadding(8,8,8,8);
 				row.addView(t);
 			}
@@ -146,6 +146,7 @@ public class SheetFragment extends Fragment{ /*
 			counter += 1;
 			table.addView(row, new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 		}
+		System.out.println(counter + "sfgsdfgdfgsdfg");
 	}
 
 }
