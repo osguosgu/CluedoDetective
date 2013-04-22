@@ -13,8 +13,13 @@
 
         <ScrollView
             android:id="@+id/scrollView1"
+<<<<<<< HEAD
+            android:layout_width="z"
+            android:layout_height="wrap_content" >
+=======
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:fillViewport="true" >
+>>>>>>> 7a3f3e0eb30d2b5c84f1fd9b4d0de4a18c812e32
 
             <TableLayout
                 android:id="@+id/tableLayout1"
