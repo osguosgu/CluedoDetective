@@ -146,7 +146,6 @@ public class SheetFragment extends Fragment{ /*
 			counter += 1;
 			table.addView(row, new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 		}
-		System.out.println(counter + "sfgsdfgdfgsdfg");
 	}
 
 }
