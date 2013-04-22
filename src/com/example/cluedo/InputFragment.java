@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.res.Resources;

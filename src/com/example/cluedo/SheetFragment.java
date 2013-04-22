@@ -31,7 +31,7 @@ public class SheetFragment extends Fragment{ /*
 		
 		inputView = inflater.inflate(R.layout.tab_1_layout, container, false);
 
-		inputView.findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
+		/*inputView.findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Activity activity = getActivity();
@@ -51,11 +51,11 @@ public class SheetFragment extends Fragment{ /*
 						row.setVisibility(View.INVISIBLE);
 					}
 					this.hidden = true;
-				}*/
+				}
 
 						
 			}
-		});
+		});*/
 		
 		updateTable();
 		
