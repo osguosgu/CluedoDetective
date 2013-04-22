@@ -31,32 +31,7 @@ public class SheetFragment extends Fragment{ /*
 		
 		inputView = inflater.inflate(R.layout.tab_1_layout, container, false);
 
-		/*inputView.findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Activity activity = getActivity();
-				if (activity == null) return;
-				//if (this.hidden) {
-				//	for (int i = 0; i < 10; i++) {
-				//		TableRow row = (TableRow) inputView.findViewById(R.id.tableLayout1).findViewById(i);
-				//		row.startAnimation(AnimationUtils.loadAnimation(activity, android.R.anim.fade_out));
-				//		row.setVisibility(View.INVISIBLE);
-				//	}
-				/*	this.hidden = false;
-				}
-				else {
-					for (int i = 0; i < 10; i++) {
-						TableRow row = (TableRow) thistable.findViewById(i);
-						row.startAnimation(AnimationUtils.loadAnimation(activity, android.R.anim.fade_out));
-						row.setVisibility(View.INVISIBLE);
-					}
-					this.hidden = true;
-				}
 
-						
-			}
-		});*/
-		
 		updateTable();
 		
 		return inputView;
@@ -111,10 +86,10 @@ public class SheetFragment extends Fragment{ /*
 				ImageView ai = new ImageView(inputView.getContext());
 				switch (logic.getDataAt(counter, j)) {
 				case 0:
-					ai.setImageResource(R.drawable.nb);
+					ai.setImageResource(R.drawable.ob);
 					break;
 				case 1:
-					ai.setImageResource(R.drawable.ob);
+					ai.setImageResource(R.drawable.nb);
 					break;
 				case 2:
 					ai.setImageResource(R.drawable.qb);
@@ -142,10 +117,10 @@ public class SheetFragment extends Fragment{ /*
 				ImageView ai = new ImageView(inputView.getContext());
 				switch (logic.getDataAt(counter, j)) {
 				case 0:
-					ai.setImageResource(R.drawable.nb);
+					ai.setImageResource(R.drawable.ob);
 					break;
 				case 1:
-					ai.setImageResource(R.drawable.ob);
+					ai.setImageResource(R.drawable.nb);
 					break;
 				case 2:
 					ai.setImageResource(R.drawable.qb);

@@ -74,8 +74,8 @@ public class GameActivity extends FragmentActivity {
 	
 	public boolean viewInfo(MenuItem menu){
 		new AlertDialog.Builder(this)
-		.setTitle("Cluedo Detective")
-		.setMessage("by: Rihis&Osku_")
+		.setTitle(R.string.title)
+		.setMessage(R.string.by)
 		.setIcon(R.drawable.agent)
 		.setPositiveButton(android.R.string.yes, null).show();
 		return true;
@@ -87,21 +87,21 @@ public class GameActivity extends FragmentActivity {
 		case 0:
 			new AlertDialog.Builder(this)
 			.setTitle(R.string.help)
-			.setMessage("\nEkan tabin ohje\n")
+			.setMessage(R.string.tab1_help)
 			.setIcon(R.drawable.agent)
 			.setPositiveButton(android.R.string.yes, null).show();
 			break;
 		case 1:
 			new AlertDialog.Builder(this)
 			.setTitle(R.string.help)
-			.setMessage("\nJoujou lisätään tapahtumia\n")
+			.setMessage(R.string.tab2_help)
 			.setIcon(R.drawable.agent)
 			.setPositiveButton(android.R.string.yes, null).show();
 			break;
 		case 2:
 			new AlertDialog.Builder(this)
 			.setTitle(R.string.help)
-			.setMessage("\nHehhee haluutkos poistaa virheitä\n")
+			.setMessage(R.string.tab3_help)
 			.setIcon(R.drawable.agent)
 			.setPositiveButton(android.R.string.yes, null).show();
 			break;

@@ -91,6 +91,7 @@ public final class R {
         public static final int are_you_sure_title=0x7f070005;
         public static final int back_button_msg=0x7f07000a;
         public static final int back_button_title=0x7f070009;
+        public static final int by=0x7f070019;
         public static final int delete_log=0x7f070004;
         public static final int good_bye=0x7f07000b;
         public static final int help=0x7f07000d;
@@ -101,6 +102,10 @@ public final class R {
         public static final int select_2=0x7f070007;
         public static final int select_3=0x7f070008;
         public static final int suspect_prompt=0x7f070010;
+        public static final int tab1_help=0x7f07001a;
+        public static final int tab2_help=0x7f07001b;
+        public static final int tab3_help=0x7f07001c;
+        public static final int title=0x7f07001d;
         public static final int title_section1=0x7f070013;
         public static final int title_section2=0x7f070014;
         public static final int title_section3=0x7f070015;

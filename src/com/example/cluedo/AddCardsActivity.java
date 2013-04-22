@@ -86,8 +86,8 @@ public class AddCardsActivity extends Activity {
 	
 	public boolean viewInfo(MenuItem menu){
 		new AlertDialog.Builder(this)
-		.setTitle("Cluedo Detective\nby: Rihis&Osku_ ")
-		.setMessage("by: Rihis&Osku_")
+		.setTitle(R.string.title)
+		.setMessage(R.string.by)
 		.setIcon(R.drawable.agent)
 		.setPositiveButton(android.R.string.yes, null).show();
 		return true;
