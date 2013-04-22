@@ -82,7 +82,6 @@ public class MainActivity extends Activity {
 			
 			ImageView image = (ImageView) new_layout.findViewById(R.id.imageViewP);
 			image.setImageDrawable(icons.getDrawable(i));
-			
 			layout.addView(new_layout);
 		}
 		icons.recycle();
