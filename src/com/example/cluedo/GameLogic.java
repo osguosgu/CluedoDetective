@@ -1,4 +1,3 @@
-
 package com.example.cluedo;
 
 import java.util.ArrayList;
@@ -9,13 +8,13 @@ import android.widget.ArrayAdapter;
 
 public class GameLogic extends Activity{
 
-	
+
 	ArrayList<String> names;
 	boolean[] active;
 	int playerid, card_amount;
 	ArrayAdapter<String> logAdapter;
 	ArrayList<Integer> cards;
-	
+
 	ArrayList<LogItem> log;
 	Resources res;
 	GridStatus[][] grid;
@@ -35,11 +34,11 @@ public class GameLogic extends Activity{
 		res = resource;
 
 	}
-	
+
 	public ArrayList<String> getNamesArrayList(){
 		return new ArrayList<String>(this.names);
 	}
-	
+
 	public ArrayList<String> getLogArrayList() {
 		ArrayList<String> r = new ArrayList<String>();
 		for (int i = 0; i < this.log.size(); i++ ) {
@@ -51,12 +50,12 @@ public class GameLogic extends Activity{
 	public void removeFromLog(int index){
 		this.log.remove(index);
 	}
-	
+
 	public void addInput(int asker, int answerer, int room_card, int weapon_card, int character_card) {
-		
+
 		this.log.add(new LogItem(asker, answerer, room_card, weapon_card, character_card));
 	}
-	
+
 	public boolean addKnownCard(int id) {
 		LogItem logItem = new LogItem(id);
 		for (LogItem l : log){
@@ -64,9 +63,9 @@ public class GameLogic extends Activity{
 		} 
 		this.log.add(logItem);
 		return true;
-		
+
 	}
-	
+
 	public void updateSheetData() {
 		// This needs to be called so that getDataAt returns things that are up to date
 		grid = new GridStatus[this.card_amount][this.names.size()];
@@ -78,7 +77,7 @@ public class GameLogic extends Activity{
 		}
 		//int guess_id = 0;
 		for (LogItem i : log) {
-			
+
 			if (i.type == 1) {
 				for (int j = 0; j < this.names.size(); j++) {
 					grid[i.known_card][this.playerid].is_known = true;
@@ -91,26 +90,26 @@ public class GameLogic extends Activity{
 			if (i.type == 0) {
 				int cards = 6; //how many character and weapon cards there is
 				for (int j = i.asker + 1 ; j < this.names.size(); j++){
-					
+
 					if (j % this.names.size() != i.answerer){
 						if (i.answerer == this.playerid) continue;
-						
+
 						grid[i.character_card][j].can_have = false;
 						grid[i.character_card][j].guess.clear();
-						
+
 						grid[i.weapon_card + cards][j].can_have = false;
 						grid[i.weapon_card + cards][j].guess.clear();
-						
+
 						grid[i.room_card + cards*2][j].can_have = false;
 						grid[i.room_card + cards*2][j].guess.clear();
 					}
 					else if(j == i.answerer){
 						if (!grid[i.character_card][this.playerid].is_known & grid[i.character_card][this.playerid].can_have)
 							grid[i.character_card][j].guess.add(counter);
-						
+
 						if (!grid[i.weapon_card + cards][this.playerid].is_known & grid[i.weapon_card][this.playerid].can_have)
 							grid[i.weapon_card + cards][j].guess.add(counter);
-						
+
 						if (!grid[i.room_card + cards*2][this.playerid].is_known & grid[i.room_card][this.playerid].can_have)
 							grid[i.room_card + cards*2][j].guess.add(counter);
 						counter += 1;
@@ -134,7 +133,7 @@ public class GameLogic extends Activity{
 								break;
 							}
 						}
-					
+
 						if (only_one){
 							grid[i][this.playerid].is_known = true;
 							grid[i][j].guess.clear();
@@ -149,20 +148,18 @@ public class GameLogic extends Activity{
 				}
 			}
 		}
-		
+
 	}
 	public int getDataAt(int card_id, int player_id) {
 		//System.out.println(this.grid);
 		if (this.grid[card_id][player_id].is_known)
 			return 0;
-		else if (this.grid[card_id][player_id].quess != 0)
-			return 1;//String.valueOf(this.grid[card_id][player_id].quess);
 		else if (!this.grid[card_id][player_id].can_have)
-			return 2;//"X";
-		return 3;
+			return 1;//"X";
+		return 2;
 	}
-	
-	
+
+
 	public class LogItem {
 		int type; // What type this log is, 0 for normal thing and 1 for just known card added
 		// Things for type 0
@@ -199,9 +196,9 @@ public class GameLogic extends Activity{
 			return "Error";
 		}
 	}
-	
+
 	public class GridStatus {
-		
+
 		Boolean is_known;
 		Boolean can_have;
 		ArrayList<Integer> guess;
@@ -212,4 +209,3 @@ public class GameLogic extends Activity{
 		}
 	}
 }
-

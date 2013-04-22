@@ -107,10 +107,10 @@ public class SheetFragment extends Fragment{ /*
 				ImageView ai = new ImageView(inputView.getContext());
 				switch (logic.getDataAt(counter, j)) {
 				case 0:
-					ai.setImageResource(R.drawable.ob);
+					ai.setImageResource(R.drawable.nb);
 					break;
 				case 1:
-					ai.setImageResource(R.drawable.nb);
+					ai.setImageResource(R.drawable.ob);
 					break;
 				case 2:
 					ai.setImageResource(R.drawable.qb);
@@ -138,10 +138,10 @@ public class SheetFragment extends Fragment{ /*
 				ImageView ai = new ImageView(inputView.getContext());
 				switch (logic.getDataAt(counter, j)) {
 				case 0:
-					ai.setImageResource(R.drawable.ob);
+					ai.setImageResource(R.drawable.nb);
 					break;
 				case 1:
-					ai.setImageResource(R.drawable.nb);
+					ai.setImageResource(R.drawable.ob);
 					break;
 				case 2:
 					ai.setImageResource(R.drawable.qb);
