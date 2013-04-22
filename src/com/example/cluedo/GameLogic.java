@@ -83,25 +83,36 @@ public class GameLogic extends Activity{
 				for (int j = 0; j < this.names.size(); j++) {
 					grid[i.known_card][this.playerid].is_known = true;
 				}
-				
+				for (int j = this.playerid + 1 ; j < this.names.size() ; j++){
+					grid[i.known_card][j % this.names.size()].can_have = false;
+					grid[i.known_card][j % this.names.size()].guess.clear();
+				}
 			}
 			if (i.type == 0) {
 				int cards = 6; //how many character and weapon cards there is
 				for (int j = i.asker + 1 ; j < this.names.size(); j++){
+					
 					if (j % this.names.size() != i.answerer){
+						if (i.answerer == this.playerid) continue;
+						
 						grid[i.character_card][j].can_have = false;
+						grid[i.character_card][j].guess.clear();
+						
 						grid[i.weapon_card + cards][j].can_have = false;
+						grid[i.weapon_card + cards][j].guess.clear();
+						
 						grid[i.room_card + cards*2][j].can_have = false;
+						grid[i.room_card + cards*2][j].guess.clear();
 					}
 					else if(j == i.answerer){
-						if (!grid[i.character_card][this.playerid].is_known)
-							grid[i.character_card][j].quess = counter;
+						if (!grid[i.character_card][this.playerid].is_known & grid[i.character_card][this.playerid].can_have)
+							grid[i.character_card][j].guess.add(counter);
 						
-						if (!grid[i.weapon_card + cards][this.playerid].is_known)
-							grid[i.weapon_card + cards][j].quess = counter;
+						if (!grid[i.weapon_card + cards][this.playerid].is_known & grid[i.weapon_card][this.playerid].can_have)
+							grid[i.weapon_card + cards][j].guess.add(counter);
 						
-						if (!grid[i.room_card + cards*2][this.playerid].is_known)
-							grid[i.room_card + cards*2][j].quess = counter;
+						if (!grid[i.room_card + cards*2][this.playerid].is_known & grid[i.room_card][this.playerid].can_have)
+							grid[i.room_card + cards*2][j].guess.add(counter);
 						counter += 1;
 						break;
 					}
@@ -111,6 +122,33 @@ public class GameLogic extends Activity{
 		this.conclusion();
 	}	
 	public void conclusion(){
+		for (int i = 0; i < this.card_amount ; i++){
+			for (int j = 0; j < this.names.size() ; j++){
+				if (grid[i][j].is_known) break;
+				else if (grid[i][j].guess.size() > 0){
+					for (int y : grid[i][j].guess){
+						boolean only_one = true;
+						for (int x = i + 1; x < i + this.card_amount ; x++){
+							if (grid[x % this.card_amount][j].guess.contains(y)){
+								only_one = false;
+								break;
+							}
+						}
+					
+						if (only_one){
+							grid[i][this.playerid].is_known = true;
+							grid[i][j].guess.clear();
+							for (int k = this.playerid + 1 ; k < this.names.size() ; k++){
+								grid[i][k % this.names.size()].can_have = false;
+								grid[i][k % this.names.size()].guess.clear();
+							}
+							i = 0;
+							j = 0;
+						}
+					}
+				}
+			}
+		}
 		
 	}
 	public int getDataAt(int card_id, int player_id) {
@@ -166,11 +204,11 @@ public class GameLogic extends Activity{
 		
 		Boolean is_known;
 		Boolean can_have;
-		int quess;
+		ArrayList<Integer> guess;
 		public GridStatus() {
+			guess = new ArrayList<Integer>();
 			is_known = false;
 			can_have = true;
-			quess = 0;
 		}
 	}
 }
