@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TableRow.LayoutParams;
@@ -103,10 +104,24 @@ public class SheetFragment extends Fragment{ /*
 			t.setPadding(8,8,8,8);
 			row.addView(t);
 			for (int j = 0; j < players.size(); j++) {
-				t = new TextView(inputView.getContext());
-				t.setText(logic.getDataAt(counter, j));
-				t.setPadding(8,8,8,8);
-				row.addView(t);
+				ImageView ai = new ImageView(inputView.getContext());
+				switch (logic.getDataAt(counter, j)) {
+				case 0:
+					ai.setImageResource(R.drawable.ob);
+					break;
+				case 1:
+					ai.setImageResource(R.drawable.nb);
+					break;
+				case 2:
+					ai.setImageResource(R.drawable.qb);
+					break;
+				}
+				
+				//t = new TextView(inputView.getContext());
+				//t.setText(logic.getDataAt(counter, j));
+				//t.setPadding(8,8,8,8);
+				//row.addView(t);
+				row.addView(ai);
 			}
 			row.setId(counter);
 			counter += 1;
@@ -120,10 +135,24 @@ public class SheetFragment extends Fragment{ /*
 			t.setPadding(8,8,8,8);
 			row.addView(t);
 			for (int j = 0; j < players.size(); j++) {
-				t = new TextView(inputView.getContext());
-				t.setText(logic.getDataAt(counter, j));
-				t.setPadding(8,8,8,8);
-				row.addView(t);
+				ImageView ai = new ImageView(inputView.getContext());
+				switch (logic.getDataAt(counter, j)) {
+				case 0:
+					ai.setImageResource(R.drawable.ob);
+					break;
+				case 1:
+					ai.setImageResource(R.drawable.nb);
+					break;
+				case 2:
+					ai.setImageResource(R.drawable.qb);
+					break;
+				}
+				
+				//t = new TextView(inputView.getContext());
+				//t.setText(logic.getDataAt(counter, j));
+				//t.setPadding(8,8,8,8);
+				//row.addView(t);
+				row.addView(ai);
 			}
 			row.setId(counter);
 			counter += 1;
@@ -137,10 +166,24 @@ public class SheetFragment extends Fragment{ /*
 			t.setPadding(8,8,8,8);
 			row.addView(t);
 			for (int j = 0; j < players.size(); j++) {
-				t = new TextView(inputView.getContext());
-				t.setText(logic.getDataAt(counter, j));
-				t.setPadding(8,8,8,8);
-				row.addView(t);
+				ImageView ai = new ImageView(inputView.getContext());
+				switch (logic.getDataAt(counter, j)) {
+				case 0:
+					ai.setImageResource(R.drawable.ob);
+					break;
+				case 1:
+					ai.setImageResource(R.drawable.nb);
+					break;
+				case 2:
+					ai.setImageResource(R.drawable.qb);
+					break;
+				}
+				
+				//t = new TextView(inputView.getContext());
+				//t.setText(logic.getDataAt(counter, j));
+				//t.setPadding(8,8,8,8);
+				//row.addView(t);
+				row.addView(ai);
 			}
 			row.setId(counter);
 			counter += 1;
