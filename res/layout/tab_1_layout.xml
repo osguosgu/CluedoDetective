@@ -6,13 +6,6 @@
 	android:layout_centerHorizontal="true"
 	android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        android:onClick="hideButtonClicked" />
-
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"

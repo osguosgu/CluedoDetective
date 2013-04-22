@@ -113,15 +113,15 @@ public class GameLogic extends Activity{
 	public void conclusion(){
 		
 	}
-	public String getDataAt(int card_id, int player_id) {
+	public int getDataAt(int card_id, int player_id) {
 		//System.out.println(this.grid);
 		if (this.grid[card_id][player_id].is_known)
-			return "!!";
+			return 0;
 		else if (this.grid[card_id][player_id].quess != 0)
-			return String.valueOf(this.grid[card_id][player_id].quess);
+			return 1;//String.valueOf(this.grid[card_id][player_id].quess);
 		else if (!this.grid[card_id][player_id].can_have)
-			return "X";
-		return "";
+			return 2;//"X";
+		return 3;
 	}
 	
 	
