@@ -31,32 +31,7 @@ public class SheetFragment extends Fragment{ /*
 		
 		inputView = inflater.inflate(R.layout.tab_1_layout, container, false);
 
-		inputView.findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Activity activity = getActivity();
-				if (activity == null) return;
-				//if (this.hidden) {
-				//	for (int i = 0; i < 10; i++) {
-				//		TableRow row = (TableRow) inputView.findViewById(R.id.tableLayout1).findViewById(i);
-				//		row.startAnimation(AnimationUtils.loadAnimation(activity, android.R.anim.fade_out));
-				//		row.setVisibility(View.INVISIBLE);
-				//	}
-				/*	this.hidden = false;
-				}
-				else {
-					for (int i = 0; i < 10; i++) {
-						TableRow row = (TableRow) thistable.findViewById(i);
-						row.startAnimation(AnimationUtils.loadAnimation(activity, android.R.anim.fade_out));
-						row.setVisibility(View.INVISIBLE);
-					}
-					this.hidden = true;
-				}*/
 
-						
-			}
-		});
-		
 		updateTable();
 		
 		return inputView;

@@ -155,11 +155,9 @@ public class GameLogic extends Activity{
 		//System.out.println(this.grid);
 		if (this.grid[card_id][player_id].is_known)
 			return 0;
-		else if (this.grid[card_id][player_id].quess != 0)
-			return 1;//String.valueOf(this.grid[card_id][player_id].quess);
 		else if (!this.grid[card_id][player_id].can_have)
-			return 2;//"X";
-		return 3;
+			return 1;//"X";
+		return 2;
 	}
 	
 	

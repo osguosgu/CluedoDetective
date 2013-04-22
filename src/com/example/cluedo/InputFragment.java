@@ -51,7 +51,7 @@ public class InputFragment extends Fragment {
 		View.OnClickListener handler = new View.OnClickListener() {
 			@Override
 			public void onClick(View inputView) {
-				System.out.println("Kutsuttu submit suspectionia");
+				//System.out.println("Kutsuttu submit suspectionia");
 				
 				final String[] array = this.getSpinnersData();
 				if (array[0].equals(array[4])){

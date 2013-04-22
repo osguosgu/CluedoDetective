@@ -24,6 +24,11 @@
     <string name="title_section3">log</string>
     <string name="hit">Submit suspection!</string>
     <string name="add_card">Add known card</string>
-	
     <string name="app_name">Cluedo Detective</string>
+    <string name ="by">By:Rihis&amp;Osku_</string>
+    <string name="tab1_help">\nHere you can see which cards are still possible answers.\n</string>
+    <string name="tab2_help">\n1. Select the player who\'s turn it is.\n\n2. Then select the suspect, weapon and room the player is suspecting.\n\n3. Select the player who shows card if anyone. And finally push submit button\n\nYou can also add known card from the bottom button.\n </string>
+    <string name="tab3_help">\nHere you see the log of the actions you have made. You can remove some log items simply just touching them.</string>
+    <string name="title">Cluedo Detective</string>
+  
 </resources>
