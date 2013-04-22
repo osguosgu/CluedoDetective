@@ -82,7 +82,7 @@ public class GameLogic extends Activity{
 				for (int j = 0; j < this.names.size(); j++) {
 					grid[i.known_card][this.playerid].is_known = true;
 				}
-				for (int j = this.playerid + 1 ; j < this.names.size() ; j++){
+				for (int j = this.playerid + 1 ; j <= this.names.size() ; j++){
 					grid[i.known_card][j % this.names.size()].can_have = false;
 					grid[i.known_card][j % this.names.size()].guess.clear();
 				}
@@ -137,7 +137,7 @@ public class GameLogic extends Activity{
 						if (only_one){
 							grid[i][this.playerid].is_known = true;
 							grid[i][j].guess.clear();
-							for (int k = this.playerid + 1 ; k < this.names.size() ; k++){
+							for (int k = this.playerid + 1 ; k <= this.names.size() ; k++){
 								grid[i][k % this.names.size()].can_have = false;
 								grid[i][k % this.names.size()].guess.clear();
 							}
