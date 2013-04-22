@@ -87,7 +87,11 @@ public class SheetFragment extends Fragment{ /*
 		for (int i = 0; i < players.size(); i++) {
 			t = new TextView(inputView.getContext());
 			t.setPadding(8,8,8,8);
-			t.setText(players.get(i));
+			String str = players.get(i);
+			if (str.length() > 3)
+				t.setText(str.substring(0, 3));
+			else
+				t.setText(str);
 			row.addView(t);
 		}
 		table.addView(row, new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
